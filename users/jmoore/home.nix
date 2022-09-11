@@ -26,13 +26,15 @@ in
       (pkgs.nerdfonts.override { fonts = [ "Hasklig" ]; })
     ];
 
+    home.sessionVariables = {
+      EDITOR = "nvim";
+    };
     programs.neovim = customNvim pkgs;
 
     programs.zsh = {
       enable = true;
       enableCompletion = false; # enabled in oh-my-zsh
       shellAliases = {
-        vim = "nvim";
         sudo = "sudo ";
       };
       oh-my-zsh = {
