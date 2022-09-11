@@ -14,7 +14,6 @@ in
 
     # package installation items
     home.packages = [
-      pkgs.neovim
       pkgs.starship
       pkgs.tmux
       pkgs.wget
