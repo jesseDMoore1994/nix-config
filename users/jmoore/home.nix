@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
   customNvim = import ./neovim;
+  customTmux = import ./tmux;
 
 in
   {
@@ -23,6 +24,7 @@ in
       pkgs.openconnect
       pkgs.teams
       pkgs.python3
+      pkgs.exa
       (pkgs.nerdfonts.override { fonts = [ "Hasklig" ]; })
     ];
 
@@ -36,10 +38,11 @@ in
       enableCompletion = false; # enabled in oh-my-zsh
       shellAliases = {
         sudo = "sudo ";
+	ls = "exa -al --color=always --group-directories-first";
       };
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "tmux" ];
+        plugins = [ "git" "tmux" "ssh-agent" ];
         theme = "jonathan";
       };
     };
@@ -49,31 +52,7 @@ in
       enableZshIntegration = true;
     };
 
-    programs.tmux = {
-      enable = true;
-      shortcut = "a";
-      aggressiveResize = true;
-      baseIndex = 1;
-      newSession = true;
-      clock24 = true;
-      keyMode = "vi";
-      # Stop tmux+escape craziness.
-      escapeTime = 0;
-
-      extraConfig = ''
-        # Mouse works as expected
-        set-option -g mouse on
-        # easy-to-remember split pane commands
-        bind | split-window -h -c "#{pane_current_path}"
-        bind - split-window -v -c "#{pane_current_path}"
-        bind c new-window -c "#{pane_current_path}"
-
-        bind -T copy-mode-vi v send -X begin-selection
-        bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
-        bind P paste-buffer
-        bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
-      '';
-    };
+    programs.tmux = customTmux pkgs;
 
     nixpkgs.config.allowUnfreePredicate = (pkg:
       builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
