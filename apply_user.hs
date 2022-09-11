@@ -6,7 +6,7 @@ import Data.Text as T
 
 main = do
     proc (T.pack "nix") [ T.pack "build"
-                        , T.pack "#homeManagerConfigurations.jmoore.activationPackage"
+                        , T.pack ".#homeManagerConfigurations.jmoore.activationPackage"
                         ] Turtle.empty
     proc (T.pack "./result/activate") [] Turtle.empty
     exit ExitSuccess
