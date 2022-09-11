@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  customNvim = import ./nvim/nvim.nix;
+  customNvim = import ./neovim;
 
 in
   {
