@@ -26,8 +26,6 @@ pkgs:
   '';
 
   plugins = with pkgs.tmuxPlugins; [
-    sensible
-    yank
     {
       plugin = dracula;
       extraConfig = ''
@@ -37,5 +35,13 @@ pkgs:
         set -g @dracula-refresh-rate 10
       '';
     }
+    {
+      plugin = resurrect;
+      extraConfig = ''
+        set -g @resurrect-strategy-nvim "session"
+      '';
+    }
+    sensible
+    yank
   ];
 }

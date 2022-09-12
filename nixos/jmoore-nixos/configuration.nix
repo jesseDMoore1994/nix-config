@@ -47,8 +47,12 @@
 
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.displayManager.lightdm = {
+    enable = true;
+    background = pkgs.nixos-artwork.wallpapers.dracula.gnomeFilePath;
+  };
+  # services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.windowManager.i3.enable = true;
   
 
   # Configure keymap in X11
