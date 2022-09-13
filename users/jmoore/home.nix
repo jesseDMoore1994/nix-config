@@ -1,8 +1,9 @@
 { config, pkgs, lib, ... }:
 let
-  customAlacritty = import ./alacritty;
-  customNvim      = import ./neovim;
-  customTmux      = import ./tmux;
+  customAlacritty = import ../../modules/alacritty;
+  customKitty = import ../../modules/kitty;
+  customNvim      = import ../../modules/neovim;
+  customTmux      = import ../../modules/tmux;
 
 in
   {
@@ -12,7 +13,7 @@ in
     home.homeDirectory = "/home/jmoore";
 
     # set background
-    home.file.".background-image".source = ./wallpapers/pastel_mesa.png;
+    home.file.".background-image".source = ../../wallpapers/pastel_mesa.png;
 
     # enable font configuration in home manager
     fonts.fontconfig.enable = true;
@@ -40,7 +41,7 @@ in
       wget
     ];
 
-    programs.alacritty = customAlacritty pkgs;
+    programs.kitty = customKitty pkgs;
 
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -79,7 +80,13 @@ in
     services.picom = {
       enable = true;
     };
-    xsession.enable = true;
+    xsession = {
+      enable = true;
+      profileExtra = ''
+       xrandr --output Virtual-1 --auto
+       xrandr --output Virtual-1 --mode 1920x1080
+      '';
+    };
     xsession.windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
@@ -101,17 +108,12 @@ in
           "XF86AudioRaiseVolume" = "exec amixer set Master 4%+";
           "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
           "XF86MonBrightnessUp" = "exec brightnessctl set 4%+";
-          "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+          "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
         };
 
         startup = [
           {
             command = "exec i3-msg workspace 1";
-            always = true;
-            notification = false;
-          }
-          {
-            command = "exec $(xrandr --output Virtual-1 --auto && xrandr --output Virtual-1 --mode 1920x1080)";
             always = true;
             notification = false;
           }

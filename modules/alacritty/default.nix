@@ -6,7 +6,7 @@ pkgs:
 
 
     window = {
-      opacity = 0.0;
+      opacity = 0.9;
       padding.x = 10;
       padding.y = 10;
       decorations = "none";
