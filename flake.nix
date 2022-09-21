@@ -7,26 +7,92 @@
   };
   outputs = { nixpkgs, home-manager, ... }:
   let
+
     system = "x86_64-linux";
+    
     pkgs = import nixpkgs {
       inherit system;
-      config = { allowUnfree = true; };
+      # allow teams even though it isn't free software
+      config.allowUnfreePredicate = (pkg:
+        builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
+          "teams"
+        ]
+      );
     };
+
     lib = nixpkgs.lib;
+
+    homeManagerBaseConfig = {
+      imports = [ 
+        ./home-modules/bat
+        ./home-modules/exa
+        ./home-modules/fd
+        ./home-modules/fonts
+        ./home-modules/kitty
+        ./home-modules/neovim
+        ./home-modules/starship
+        ./home-modules/tmux
+        ./home-modules/zoxide
+        ./home-modules/zsh
+      ];
+      home = {
+        username = "jmoore";
+        homeDirectory = "/home/jmoore";
+        packages = with pkgs; [
+          firefox
+          git
+          jq
+          openconnect
+          python3
+          teams
+          wget
+        ];
+        stateVersion = "21.11";
+      };
+      programs.home-manager.enable = true;
+    };
+
+    homeManagerLaptopConfig = {
+      imports = [ 
+        ./home-modules/i3
+      ];
+    };
+
+    jmooreNixosSystemConfig = {
+      imports = [
+        ./hardware-configs/jmoore-nixos.nix
+        ./system-modules/nix
+        ./system-modules/openssh
+        ./system-modules/users
+        ./system-modules/virtualization
+        ./system-modules/xserver
+      ];
+    
+      boot.loader.grub.enable = true;
+      boot.loader.grub.version = 2;
+      boot.loader.grub.device = "/dev/sda";
+      networking.hostName = "jmoore-nixos";
+      time.timeZone = "America/Chicago";
+      networking.useDHCP = false;
+      networking.interfaces.ens3.useDHCP = true;
+      system.stateVersion = "21.11";
+    };
+
   in {
     homeManagerConfigurations = {
-      jmoore = home-manager.lib.homeManagerConfiguration {
+      "jmoore@jmoore-nixos" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-	  ./users/jmoore/home.nix
-	];
+          homeManagerBaseConfig
+          homeManagerLaptopConfig
+        ];
       };
     };
     nixosConfigurations = {
       jmoore-nixos = lib.nixosSystem {
         inherit system;
 	modules = [
-          ./nixos/jmoore-nixos/configuration.nix
+          jmooreNixosSystemConfig
 	];
       };
     };
