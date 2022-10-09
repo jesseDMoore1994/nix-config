@@ -4,12 +4,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = "github:nix-community/NUR";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, nur, sops-nix, ... }:
   let
 
     system = "x86_64-linux";
-    
+
     pkgs = import nixpkgs {
       inherit system;
       # allow teams even though it isn't free software
@@ -27,7 +29,9 @@
         ./home-modules/bat
         ./home-modules/exa
         ./home-modules/fd
+        ./home-modules/firefox
         ./home-modules/fonts
+        #./home-modules/gnupg
         ./home-modules/kitty
         ./home-modules/neovim
         ./home-modules/starship
@@ -39,7 +43,6 @@
         username = "jmoore";
         homeDirectory = "/home/jmoore";
         packages = with pkgs; [
-          firefox
           git
           jq
           openconnect
@@ -63,6 +66,8 @@
         ./hardware-configs/jmoore-nixos.nix
         ./system-modules/nix
         ./system-modules/openssh
+        ./system-modules/sops
+        ./system-modules/openvpn
         ./system-modules/users
         ./system-modules/virtualization
         ./system-modules/xserver
@@ -83,6 +88,7 @@
       "jmoore@jmoore-nixos" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
+          { nixpkgs.overlays = [ nur.overlay ];}
           homeManagerBaseConfig
           homeManagerLaptopConfig
         ];
@@ -92,6 +98,7 @@
       jmoore-nixos = lib.nixosSystem {
         inherit system;
 	modules = [
+          sops-nix.nixosModules.sops
           jmooreNixosSystemConfig
 	];
       };
