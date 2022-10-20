@@ -83,6 +83,44 @@
       system.stateVersion = "21.11";
     };
 
+    asmodeusSystemConfig = {
+      imports = [
+        ./hardware-configs/asmodeus.nix
+        ./system-modules/nix
+        ./system-modules/openssh
+        ./system-modules/sops
+        ./system-modules/openvpn
+        ./system-modules/users
+        ./system-modules/virtualization
+        ./system-modules/xserver
+      ];
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+      boot.loader.efi.efiSysMountPoint = "/boot/efi";
+      networking.hostName = "asmodeus"; # Define your hostname.
+      networking.networkmanager.enable = true;
+      time.timeZone = "America/Chicago";
+      i18n.defaultLocale = "en_US.utf8";
+      services.xserver.enable = true;
+      services.xserver.displayManager.lightdm.enable = true;
+      services.xserver.desktopManager.xfce.enable = true;
+      services.xserver = {
+        layout = "us";
+        xkbVariant = "";
+      };
+      sound.enable = true;
+      hardware.pulseaudio.enable = false;
+      security.rtkit.enable = true;
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
+      system.stateVersion = "22.05"; # Did you read the comment?
+
+    };
+
   in {
     homeManagerConfigurations = {
       "jmoore@jmoore-nixos" = home-manager.lib.homeManagerConfiguration {
@@ -93,6 +131,13 @@
           homeManagerLaptopConfig
         ];
       };
+      "jmoore@asmodeus" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          { nixpkgs.overlays = [ nur.overlay ];}
+          homeManagerBaseConfig
+        ];
+      };
     };
     nixosConfigurations = {
       jmoore-nixos = lib.nixosSystem {
@@ -100,6 +145,13 @@
 	modules = [
           sops-nix.nixosModules.sops
           jmooreNixosSystemConfig
+	];
+      };
+      asmodeus = lib.nixosSystem {
+        inherit system;
+	modules = [
+          sops-nix.nixosModules.sops
+          asmodeusSystemConfig
 	];
       };
     };
