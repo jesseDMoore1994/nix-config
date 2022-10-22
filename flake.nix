@@ -38,7 +38,6 @@
         ./home-modules/fd
         ./home-modules/firefox
         ./home-modules/fonts
-        #./home-modules/gnupg
         ./home-modules/kitty
         ./home-modules/neovim
         ./home-modules/starship
@@ -52,7 +51,8 @@
         packages = with pkgs; [
           btop
           git
-          #jq
+          gnumake
+          jq
           openconnect
           python3
           teams
@@ -63,7 +63,7 @@
       programs.home-manager.enable = true;
     };
 
-    homeManagerLaptopConfig = {
+    singleI3Display = {
       imports = [ 
         ./home-modules/i3
       ];
@@ -76,6 +76,7 @@
         ./system-modules/openssh
         ./system-modules/sops
         ./system-modules/openvpn
+        ./system-modules/tailscale
         ./system-modules/users
         ./system-modules/virtualization
         ./system-modules/xserver
@@ -99,6 +100,7 @@
         ./system-modules/sops
         ./system-modules/steam
         ./system-modules/openvpn
+        ./system-modules/tailscale
         ./system-modules/users
         ./system-modules/virtualization
         ./system-modules/xserver
@@ -139,7 +141,7 @@
         modules = [
           { nixpkgs.overlays = [ nur.overlay ];}
           homeManagerBaseConfig
-          homeManagerLaptopConfig
+          singleI3Display
         ];
       };
       "jmoore@asmodeus" = home-manager.lib.homeManagerConfiguration {
@@ -147,7 +149,7 @@
         modules = [
           { nixpkgs.overlays = [ nur.overlay ];}
           homeManagerBaseConfig
-          homeManagerLaptopConfig
+          singleI3Display
         ];
       };
     };
