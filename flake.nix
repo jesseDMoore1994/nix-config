@@ -17,7 +17,13 @@
       # allow teams even though it isn't free software
       config.allowUnfreePredicate = (pkg:
         builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
+          "nvidia"
+          "nvidia-x11"
+          "nvidia-settings"
           "teams"
+          "steam"
+          "steam-original"
+          "steam-runtime"
         ]
       );
     };
@@ -43,6 +49,7 @@
         username = "jmoore";
         homeDirectory = "/home/jmoore";
         packages = with pkgs; [
+          btop
           git
           #jq
           openconnect
@@ -89,6 +96,7 @@
         ./system-modules/nix
         ./system-modules/openssh
         ./system-modules/sops
+        ./system-modules/steam
         ./system-modules/openvpn
         ./system-modules/users
         ./system-modules/virtualization
@@ -108,6 +116,8 @@
         layout = "us";
         xkbVariant = "";
       };
+      services.xserver.videoDrivers = [ "nvidia" ];
+      hardware.opengl.enable = true;
       sound.enable = true;
       hardware.pulseaudio.enable = false;
       security.rtkit.enable = true;
@@ -136,12 +146,14 @@
         modules = [
           { nixpkgs.overlays = [ nur.overlay ];}
           homeManagerBaseConfig
+          homeManagerLaptopConfig
         ];
       };
     };
     nixosConfigurations = {
       jmoore-nixos = lib.nixosSystem {
         inherit system;
+        inherit pkgs;
 	modules = [
           sops-nix.nixosModules.sops
           jmooreNixosSystemConfig
@@ -149,6 +161,7 @@
       };
       asmodeus = lib.nixosSystem {
         inherit system;
+        inherit pkgs;
 	modules = [
           sops-nix.nixosModules.sops
           asmodeusSystemConfig

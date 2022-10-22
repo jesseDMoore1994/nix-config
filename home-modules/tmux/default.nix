@@ -10,7 +10,7 @@
     clock24 = true;
     keyMode = "vi";
     # Stop tmux+escape craziness.
-    escapeTime = 0;
+    escapeTime = 50;
 
     extraConfig = ''
       # Mouse works as expected
