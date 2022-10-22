@@ -23,6 +23,7 @@
           "teams"
           "steam"
           "steam-original"
+          "steam-run"
           "steam-runtime"
         ]
       );
