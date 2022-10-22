@@ -44,7 +44,7 @@
         homeDirectory = "/home/jmoore";
         packages = with pkgs; [
           git
-          jq
+          #jq
           openconnect
           python3
           teams
