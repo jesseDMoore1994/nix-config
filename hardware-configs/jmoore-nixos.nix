@@ -20,4 +20,13 @@
 
   swapDevices = [ ];
 
+    
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/sda";
+  networking.hostName = "jmoore-nixos";
+  time.timeZone = "America/Chicago";
+  networking.useDHCP = false;
+  networking.interfaces.ens3.useDHCP = true;
+  system.stateVersion = "21.11";
 }

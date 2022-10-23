@@ -9,12 +9,8 @@
   };
   outputs = { nixpkgs, home-manager, nur, sops-nix, ... }:
   let
-
-    system = "x86_64-linux";
-
     pkgs = import nixpkgs {
       inherit system;
-      # allow teams even though it isn't free software
       config.allowUnfreePredicate = (pkg:
         builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
           "nvidia"
@@ -28,147 +24,73 @@
         ]
       );
     };
+    system = "x86_64-linux";
 
-    lib = nixpkgs.lib;
-
-    homeManagerBaseConfig = {
-      imports = [ 
-        ./home-modules/bat
-        ./home-modules/exa
-        ./home-modules/fd
-        ./home-modules/firefox
-        ./home-modules/fonts
-        ./home-modules/kitty
-        ./home-modules/neovim
-        ./home-modules/starship
-        ./home-modules/tmux
-        ./home-modules/zoxide
-        ./home-modules/zsh
-      ];
-      home = {
-        username = "jmoore";
-        homeDirectory = "/home/jmoore";
-        packages = with pkgs; [
-          btop
-          git
-          gnumake
-          jq
-          openconnect
-          python3
-          teams
-          wget
-        ];
-        stateVersion = "21.11";
-      };
-      programs.home-manager.enable = true;
+    createHomeManagerConfig = { userConfig, displayConfig ? [], customModules ? [] }: home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        { nixpkgs.overlays = [ nur.overlay ];}
+        userConfig
+      ] ++ displayConfig ++ customModules;
     };
 
-    singleI3Display = {
-      imports = [ 
-        ./home-modules/i3
+    createNixosSystem = hardwareConfig : nixpkgs.lib.nixosSystem {
+      inherit system;
+      inherit pkgs;
+      modules = [
+        sops-nix.nixosModules.sops
+        hardwareConfig
       ];
-    };
-
-    jmooreNixosSystemConfig = {
-      imports = [
-        ./hardware-configs/jmoore-nixos.nix
-        ./system-modules/nix
-        ./system-modules/openssh
-        ./system-modules/sops
-        ./system-modules/openvpn
-        ./system-modules/tailscale
-        ./system-modules/users
-        ./system-modules/virtualization
-        ./system-modules/xserver
-      ];
-    
-      boot.loader.grub.enable = true;
-      boot.loader.grub.version = 2;
-      boot.loader.grub.device = "/dev/sda";
-      networking.hostName = "jmoore-nixos";
-      time.timeZone = "America/Chicago";
-      networking.useDHCP = false;
-      networking.interfaces.ens3.useDHCP = true;
-      system.stateVersion = "21.11";
-    };
-
-    asmodeusSystemConfig = {
-      imports = [
-        ./hardware-configs/asmodeus.nix
-        ./system-modules/nix
-        ./system-modules/openssh
-        ./system-modules/sops
-        ./system-modules/steam
-        ./system-modules/openvpn
-        ./system-modules/tailscale
-        ./system-modules/users
-        ./system-modules/virtualization
-        ./system-modules/xserver
-      ];
-      boot.loader.systemd-boot.enable = true;
-      boot.loader.efi.canTouchEfiVariables = true;
-      boot.loader.efi.efiSysMountPoint = "/boot/efi";
-      networking.hostName = "asmodeus"; # Define your hostname.
-      networking.networkmanager.enable = true;
-      time.timeZone = "America/Chicago";
-      i18n.defaultLocale = "en_US.utf8";
-      services.xserver.enable = true;
-      services.xserver.displayManager.lightdm.enable = true;
-      services.xserver.desktopManager.xfce.enable = true;
-      services.xserver = {
-        layout = "us";
-        xkbVariant = "";
-      };
-      services.xserver.videoDrivers = [ "nvidia" ];
-      hardware.opengl.enable = true;
-      sound.enable = true;
-      hardware.pulseaudio.enable = false;
-      security.rtkit.enable = true;
-      services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-      };
-      system.stateVersion = "22.05"; # Did you read the comment?
-
     };
 
   in {
     homeManagerConfigurations = {
-      "jmoore@jmoore-nixos" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          { nixpkgs.overlays = [ nur.overlay ];}
-          homeManagerBaseConfig
-          singleI3Display
+      "jmoore@jmoore-nixos" = createHomeManagerConfig {
+        userConfig = import ./jmoore.nix;
+        displayConfig = [
+          {
+            imports = [ ./home-modules/i3];
+          }
         ];
       };
-      "jmoore@asmodeus" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          { nixpkgs.overlays = [ nur.overlay ];}
-          homeManagerBaseConfig
-          singleI3Display
+      "jmoore@asmodeus" = createHomeManagerConfig {
+        userConfig = import ./jmoore.nix;
+        displayConfig = [
+          {
+            imports = [ ./home-modules/i3];
+          }
         ];
       };
     };
     nixosConfigurations = {
-      jmoore-nixos = lib.nixosSystem {
-        inherit system;
-        inherit pkgs;
-	modules = [
-          sops-nix.nixosModules.sops
-          jmooreNixosSystemConfig
-	];
+      jmoore-nixos = createNixosSystem {
+        imports = [
+          ./hardware-configs/jmoore-nixos.nix
+          ./system-modules/nix
+          ./system-modules/openssh
+          ./system-modules/openvpn
+          ./system-modules/sops
+          ./system-modules/tailscale
+          ./system-modules/users
+          ./system-modules/virtualization
+          ./system-modules/xserver
+        ];
       };
-      asmodeus = lib.nixosSystem {
-        inherit system;
-        inherit pkgs;
-	modules = [
-          sops-nix.nixosModules.sops
-          asmodeusSystemConfig
-	];
+      asmodeus = createNixosSystem {
+        imports = [
+          ./hardware-configs/asmodeus.nix
+          ./system-modules/nix
+          ./system-modules/nvidia
+          ./system-modules/openssh
+          ./system-modules/openvpn
+          ./system-modules/sops
+          ./system-modules/sound
+          ./system-modules/steam
+          ./system-modules/tailscale
+          ./system-modules/users
+          ./system-modules/virtualization
+          ./system-modules/xserver
+        ];
       };
     };
   };
