@@ -9,60 +9,16 @@
   };
   outputs = { nixpkgs, home-manager, nur, sops-nix, ... }:
     let
-      systemPkgs = system: import nixpkgs {
-        system = system;
-        config.allowUnfreePredicate = (pkg:
-          builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
-            "nvidia"
-            "nvidia-x11"
-            "nvidia-settings"
-            "teams"
-            "steam"
-            "steam-original"
-            "steam-run"
-            "steam-runtime"
-          ]
-        );
+      lib = import ./lib {
+        nixpkgs = nixpkgs;
+        home-manager = home-manager;
+        nur = nur;
+        sops-nix = sops-nix;
       };
-
-      createHomeManagerConfig =
-        { userConfig
-        , displayConfig ? [ ]
-        , customModules ? [ ]
-        , pkgs ? import nixpkgs
-        }: home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
-          modules = [
-            { nixpkgs.overlays = [ nur.overlay ]; }
-            userConfig
-          ] ++ displayConfig ++ customModules;
-        };
-
-      createHomeManagerConfigs = pkgs: configs: pkgs.lib.attrsets.mapAttrs
-        (name: value: createHomeManagerConfig value)
-        configs;
-
-      createNixosSystem =
-        { hardwareConfig
-        , system
-        , pkgs ? import nixpkgs
-        }: nixpkgs.lib.nixosSystem {
-          system = system;
-          pkgs = pkgs;
-          modules = [
-            sops-nix.nixosModules.sops
-            hardwareConfig
-          ];
-        };
-
-      createNixosSystems = pkgs: configs: pkgs.lib.attrsets.mapAttrs
-        (name: value: createNixosSystem value)
-        configs;
-
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-      homeManagerConfigurations = createHomeManagerConfigs (systemPkgs "x86_64-linux") {
+      homeManagerConfigurations = lib.createHomeManagerConfigs (lib.systemPkgs "x86_64-linux") {
         "jmoore@jmoore-nixos" = {
           userConfig = import ./jmoore.nix;
           displayConfig = [
@@ -70,7 +26,7 @@
               imports = [ ./home-modules/i3 ];
             }
           ];
-          pkgs = systemPkgs "x86_64-linux";
+          pkgs = lib.systemPkgs "x86_64-linux";
         };
         "jmoore@asmodeus" = {
           userConfig = import ./jmoore.nix;
@@ -79,10 +35,10 @@
               imports = [ ./home-modules/i3 ];
             }
           ];
-          pkgs = systemPkgs "x86_64-linux";
+          pkgs = lib.systemPkgs "x86_64-linux";
         };
       };
-      nixosConfigurations = createNixosSystems (systemPkgs "x86_64-linux") {
+      nixosConfigurations = lib.createNixosSystems (lib.systemPkgs "x86_64-linux") {
         jmoore-nixos = {
           hardwareConfig = {
             imports = [
@@ -98,7 +54,7 @@
             ];
           };
           system = "x86_64-linux";
-          pkgs = systemPkgs "x86_64-linux";
+          pkgs = lib.systemPkgs "x86_64-linux";
         };
         asmodeus = {
           hardwareConfig = {
@@ -118,7 +74,7 @@
             ];
           };
           system = "x86_64-linux";
-          pkgs = systemPkgs "x86_64-linux";
+          pkgs = lib.systemPkgs "x86_64-linux";
         };
       };
     };
