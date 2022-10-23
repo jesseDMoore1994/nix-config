@@ -1,7 +1,7 @@
-{ pkgs, home, ...}:
+{ pkgs, home, ... }:
 
 {
-  home.packages = with pkgs; [fd];
+  home.packages = with pkgs; [ fd ];
   programs.zsh.shellAliases = {
     find = "fd";
   };

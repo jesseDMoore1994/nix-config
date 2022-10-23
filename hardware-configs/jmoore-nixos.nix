@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [
+      (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "ehci_pci" "sd_mod" "sr_mod" ];
@@ -14,13 +15,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/217f0ddf-2932-4af3-a54b-c907ef6ea56a";
+    {
+      device = "/dev/disk/by-uuid/217f0ddf-2932-4af3-a54b-c907ef6ea56a";
       fsType = "ext4";
     };
 
   swapDevices = [ ];
 
-    
+
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";

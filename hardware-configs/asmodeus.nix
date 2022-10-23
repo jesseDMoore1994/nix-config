@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -17,17 +18,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/077dca9a-1072-4d54-bcc0-fa2d378976fb";
+    {
+      device = "/dev/disk/by-uuid/077dca9a-1072-4d54-bcc0-fa2d378976fb";
       fsType = "ext4";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/A87A-9651";
+    {
+      device = "/dev/disk/by-uuid/A87A-9651";
       fsType = "vfat";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/8d0e6b96-60c7-49fd-8ba2-d551f4359bef";
+    {
+      device = "/dev/disk/by-uuid/8d0e6b96-60c7-49fd-8ba2-d551f4359bef";
       fsType = "ext4";
     };
 

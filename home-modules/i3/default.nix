@@ -4,15 +4,15 @@
   services.picom = {
     enable = true;
   };
-  
+
   # move background somewhere I can get it
   home.file.".background-image".source = ../../wallpapers/pastel_mesa.png;
   programs.feh.enable = true;
   xsession = {
     enable = true;
     profileExtra = ''
-     xrandr --output Virtual-1 --auto
-     xrandr --output Virtual-1 --mode 1920x1080
+      xrandr --output Virtual-1 --auto
+      xrandr --output Virtual-1 --mode 1920x1080
     '';
     windowManager.i3 = {
       enable = true;

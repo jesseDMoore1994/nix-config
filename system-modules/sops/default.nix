@@ -1,4 +1,4 @@
-{config, pkgs, ... }:
+{ config, pkgs, ... }:
 {
   sops.defaultSopsFile = ../../secrets/example.yaml;
   # This will automatically import SSH keys as age keys
@@ -8,11 +8,11 @@
   # This will generate a new key if the key specified above does not exist
   sops.age.generateKey = true;
   # This is the actual specification of the secrets.
-  sops.secrets.pia-auth = {};
+  sops.secrets.pia-auth = { };
   sops.secrets.pia-auth.mode = "0440";
   sops.secrets.pia-auth.owner = config.users.users.jmoore.name;
   sops.secrets.pia-auth.group = "wheel";
-  sops.secrets.pia-config = {};
+  sops.secrets.pia-config = { };
   sops.secrets.pia-config.mode = "0440";
   sops.secrets.pia-config.owner = config.users.users.jmoore.name;
   sops.secrets.pia-config.group = "wheel";

@@ -17,9 +17,9 @@ pkgs:
         size = 11.0;
         use-thin-strokes = true;
 
-         normal.family = "Hasklug Nerd Font";
-         bold.family = "Hasklug Nerd Font";
-         italic.family = "Hasklug Nerd Font";
+        normal.family = "Hasklug Nerd Font";
+        bold.family = "Hasklug Nerd Font";
+        italic.family = "Hasklug Nerd Font";
       };
 
       # Colors (Dracula)
@@ -31,26 +31,26 @@ pkgs:
         };
         # Normal colors
         normal = {
-          black =  "#000000";
-          red =    "#ff5555";
-          green =  "#50fa7b";
+          black = "#000000";
+          red = "#ff5555";
+          green = "#50fa7b";
           yellow = "#f1fa8c";
-          blue =   "#caa9fa";
-          magenta ="#ff79c6";
-          cyan =   "#8be9fd";
-          white =  "#bfbfbf";
+          blue = "#caa9fa";
+          magenta = "#ff79c6";
+          cyan = "#8be9fd";
+          white = "#bfbfbf";
         };
-      
+
         # Bright colors
         bright = {
-          black =  "#575b70";
-          red =    "#ff6e67";
-          green =  "#5af78e";
+          black = "#575b70";
+          red = "#ff6e67";
+          green = "#5af78e";
           yellow = "#f4f99d";
-          blue =   "#caa9fa";
-          magenta ="#ff92d0";
-          cyan =   "#9aedfe";
-          white =  "#e6e6e6";
+          blue = "#caa9fa";
+          magenta = "#ff92d0";
+          cyan = "#9aedfe";
+          white = "#e6e6e6";
         };
       };
     };

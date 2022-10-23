@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ 
+  imports = [
     ./home-modules/bat
     ./home-modules/exa
     ./home-modules/fd
