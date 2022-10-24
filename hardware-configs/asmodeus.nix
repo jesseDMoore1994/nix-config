@@ -52,6 +52,9 @@
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.utf8";
   services.xserver.enable = true;
+  services.xserver.displayManager.setupCommands = ''
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --auto --output HDMI-0 --auto --right-of DP-1
+  '';
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
   system.stateVersion = "22.05"; # Did you read the comment?

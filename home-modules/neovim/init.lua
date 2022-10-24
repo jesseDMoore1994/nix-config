@@ -33,3 +33,6 @@ o.timeoutlen = 400
 o.title = true
 o.updatetime = 300
 
+api.nvim_command([[
+hi! Normal ctermbg=NONE guibg=NONE
+]])

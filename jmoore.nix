@@ -9,6 +9,7 @@
     ./home-modules/fonts
     ./home-modules/kitty
     ./home-modules/neovim
+    ./home-modules/rofi
     ./home-modules/starship
     ./home-modules/tmux
     ./home-modules/zoxide
@@ -22,9 +23,11 @@
       git
       gnumake
       jq
+      neofetch
       openconnect
       python3
       teams
+      vivid
       wget
     ];
     stateVersion = "21.11";

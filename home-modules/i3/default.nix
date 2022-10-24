@@ -11,8 +11,8 @@
   xsession = {
     enable = true;
     profileExtra = ''
-      xrandr --output Virtual-1 --auto
-      xrandr --output Virtual-1 --mode 1920x1080
+      xrandr --output DP-1 --auto
+      xrandr --output HDMI-0 --auto --right-of DP-1
     '';
     windowManager.i3 = {
       enable = true;
@@ -36,6 +36,8 @@
           "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
           "XF86MonBrightnessUp" = "exec brightnessctl set 4%+";
           "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
+          "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -modi drun -show drun";
+          "${modifier}+Shift+d" = "exec ${pkgs.rofi}/bin/rofi -show window";
         };
 
         startup = [

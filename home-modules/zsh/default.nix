@@ -6,7 +6,11 @@ pkgs:
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "ssh-agent" ];
-      theme = "jonathan";
+      theme = "";
     };
+    initExtra = ''
+      export LS_COLORS="$(vivid generate dracula)"
+      neofetch
+      '';
   };
 }
