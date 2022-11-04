@@ -60,14 +60,16 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/asmodeus.nix
+              #./system-modules/amd
               ./system-modules/nix
               ./system-modules/nvidia
               ./system-modules/openssh
               ./system-modules/openvpn
+              ./system-modules/pci-passthrough
               ./system-modules/sops
               ./system-modules/sound
               ./system-modules/steam
-              ./system-modules/tailscale
+              #./system-modules/tailscale
               ./system-modules/users
               ./system-modules/virtualization
               ./system-modules/xserver

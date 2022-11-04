@@ -5,6 +5,9 @@ pkgs:
     enable = true;
     settings = {
 
+      bell = {
+        command = false;
+      };
 
       window = {
         opacity = 0.9;

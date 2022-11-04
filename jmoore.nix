@@ -9,6 +9,7 @@
     ./home-modules/fonts
     ./home-modules/kitty
     ./home-modules/neovim
+    ./home-modules/polybar
     ./home-modules/rofi
     ./home-modules/starship
     ./home-modules/tmux

@@ -10,10 +10,10 @@
   programs.feh.enable = true;
   xsession = {
     enable = true;
-    profileExtra = ''
-      xrandr --output DP-1 --auto
-      xrandr --output HDMI-0 --auto --right-of DP-1
-    '';
+    #profileExtra = ''
+    #  xrandr --output DP-1 --auto
+    #  xrandr --output HDMI-0 --auto --right-of DP-1
+    #'';
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;

@@ -53,7 +53,7 @@
   i18n.defaultLocale = "en_US.utf8";
   services.xserver.enable = true;
   services.xserver.displayManager.setupCommands = ''
-    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --auto --output HDMI-0 --auto --right-of DP-1
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1360x768 --dpi 40 --output HDMI-0 --mode 1920x1080 --dpi 96 --right-of DP-1
   '';
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.xfce.enable = true;
