@@ -6,8 +6,11 @@
   };
 
   # move background somewhere I can get it
-  home.file.".background-image".source = ../../wallpapers/pastel_mesa.png;
+  home.file.".background-image".source = ../../wallpapers/nixos_dracula.png;
   programs.feh.enable = true;
+
+  programs.xmobar.enable = true;
+  programs.xmobar.extraConfig = builtins.readFile ./xmobarrc;
 
   xsession = {
     enable = true;

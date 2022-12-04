@@ -47,6 +47,7 @@ myFont = "xft:Hasklug Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
 myStartupHook :: X ()
 myStartupHook = do
    spawn "exec feh --bg-scale ~/.background-image"
+   spawn "exec xmobar"
 
 --Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
