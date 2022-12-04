@@ -153,7 +153,8 @@ myConfig = defaultConfig
   { modMask = mod4Mask -- Use Super instead of Alt
   , terminal = "kitty"
   , startupHook = myStartupHook
-  , layoutHook = myLayoutHook }
+  , layoutHook = myLayoutHook
+  , focusedBorderColor = "#BD93F9" }
   `additionalKeys`
   [ ( (mod4Mask,xK_r), compileRestart True)
   , ( (mod4Mask,xK_d), spawn "rofi -modi drun -show drun" )

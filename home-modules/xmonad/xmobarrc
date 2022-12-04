@@ -3,10 +3,10 @@ Config {
    -- appearance
      font =         "xft:Hasklug Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
    , bgColor =      "#282A36"
-   , fgColor =      "#F8F8F2"
+   , fgColor =      "#BD93F9"
    , position =     Top
    , border =       BottomB
-   , borderColor =  "#F8F8F2"
+   , borderColor =  "#BD93F9"
    , alpha =        192
 
    -- layout
@@ -39,7 +39,7 @@ Config {
    , commands = 
 
         -- weather monitor
-        [ Run Weather "RJTT" [ "--template", "<skyCondition> | <fc=#BD93F9><tempC></fc>°C | <fc=#BD93F9><rh></fc>% | <fc=#BD93F9><pressure></fc>hPa"
+        [ Run Weather "RJTT" [ "--template", "<skyCondition> | <fc=#8BE9FD><tempC></fc>°C | <fc=#8BE9FD><rh></fc>% | <fc=#8BE9FD><pressure></fc>hPa"
                              ] 36000
 
         -- network activity monitor (dynamic interface resolution)
@@ -97,7 +97,7 @@ Config {
 
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "<fc=#F8F8F2>%F (%a) %T</fc>" "date" 10
+        , Run Date           "<fc=#BD93F9>%F (%a) %T</fc>" "date" 10
 
         -- keyboard layout indicator
         , Run Kbd            [ ("us(dvorak)" , "<fc=#00008B>DV</fc>")
