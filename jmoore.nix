@@ -9,6 +9,7 @@
     ./home-modules/fonts
     ./home-modules/kitty
     ./home-modules/neovim
+    ./home-modules/nix-direnv
     ./home-modules/polybar
     ./home-modules/rofi
     ./home-modules/starship
@@ -21,10 +22,12 @@
     homeDirectory = "/home/jmoore";
     packages = with pkgs; [
       btop
+      discord
       git
       gnumake
       jq
       neofetch
+      niv
       openconnect
       python3
       teams

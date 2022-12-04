@@ -14,6 +14,9 @@
     #  xrandr --output DP-1 --auto
     #  xrandr --output HDMI-0 --auto --right-of DP-1
     #'';
+    #windowManager.command = ''
+    #  exec ${pkgs.i3-gaps}/bin/i3
+    #'';
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;

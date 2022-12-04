@@ -10,7 +10,11 @@ pkgs:
     };
     initExtra = ''
       export LS_COLORS="$(vivid generate dracula)"
+      eval "$(direnv hook zsh)"
       neofetch
       '';
+    shellAliases = {
+      work = "ssh jmoore@jmoore-arch.adtran.com";
+    };
   };
 }

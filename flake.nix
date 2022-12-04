@@ -32,7 +32,7 @@
           userConfig = import ./jmoore.nix;
           displayConfig = [
             {
-              imports = [ ./home-modules/i3 ];
+              imports = [ ./home-modules/xmonad ];
             }
           ];
           pkgs = lib.systemPkgs "x86_64-linux";
@@ -43,6 +43,7 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/jmoore-nixos.nix
+              ./system-modules/lightdm
               ./system-modules/nix
               ./system-modules/openssh
               ./system-modules/openvpn
@@ -61,6 +62,7 @@
             imports = [
               ./hardware-configs/asmodeus.nix
               #./system-modules/amd
+              ./system-modules/lightdm
               ./system-modules/nix
               ./system-modules/nvidia
               ./system-modules/openssh
@@ -69,9 +71,10 @@
               ./system-modules/sops
               ./system-modules/sound
               ./system-modules/steam
-              ./system-modules/tailscale
+              #./system-modules/tailscale
               ./system-modules/users
               ./system-modules/virtualization
+              ./system-modules/xfce
               ./system-modules/xserver
             ];
           };

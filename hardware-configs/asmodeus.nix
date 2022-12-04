@@ -37,25 +37,14 @@
 
   swapDevices = [ ];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
-
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
   networking.hostName = "asmodeus"; # Define your hostname.
   networking.networkmanager.enable = true;
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.utf8";
-  services.xserver.enable = true;
   services.xserver.displayManager.setupCommands = ''
     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1360x768 --dpi 40 --output HDMI-0 --mode 1920x1080 --dpi 96 --right-of DP-1
   '';
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "22.05";
 }

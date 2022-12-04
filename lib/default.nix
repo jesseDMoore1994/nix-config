@@ -5,6 +5,7 @@ rec {
     system = system;
     config.allowUnfreePredicate = (pkg:
       builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
+        "discord"
         "nvidia"
         "nvidia-x11"
         "nvidia-settings"
