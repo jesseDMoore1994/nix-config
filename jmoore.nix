@@ -29,6 +29,7 @@
       niv
       openconnect
       python3
+      ranger
       teams
       vivid
       wget

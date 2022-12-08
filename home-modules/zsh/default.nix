@@ -15,6 +15,12 @@ pkgs:
       '';
     shellAliases = {
       work = "ssh jmoore@jmoore-arch.adtran.com";
+      nc = "cd $HOME/projects/nix-config";
+      ncga = "nc; ./scripts/apply_system.hs; cd -";
+      ncas = "nc; ./scripts/apply_system.hs; cd -";
+      ncau = "nc; ./scripts/apply_user.hs; cd -";
+      ncu = "nc; ./scripts/update.hs; cd -";
+      icat = "kitty +kitten icat";
     };
   };
 }
