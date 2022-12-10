@@ -3,6 +3,7 @@ local b = vim.b
 local g = vim.g
 local map = vim.keymap.set
 local o = vim.o
+local opt = vim.opt
 
 vim.cmd("colorscheme dracula")
 
@@ -33,6 +34,9 @@ o.timeoutlen = 400
 o.title = true
 o.updatetime = 300
 
+opt.colorcolumn = "79"
+
 api.nvim_command([[
 hi! Normal ctermbg=NONE guibg=NONE
+hi! ColorColumn ctermbg=red guibg=red
 ]])

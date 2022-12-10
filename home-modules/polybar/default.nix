@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  mainBar = import ./bar.nix {};
+  mainBar = import ./bar.nix { };
 
   mypolybar = pkgs.polybar.override {
     alsaSupport = true;
@@ -23,7 +23,7 @@ in
     package = mypolybar;
     config = ./config.ini;
     script = ''
-polybar &
-'';
+      polybar &
+    '';
   };
 }

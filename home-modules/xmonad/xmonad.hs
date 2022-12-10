@@ -122,9 +122,9 @@ tabs     = renamed [Replace "tabs"]
 
 -- setting colors for tabs layout and tabs sublayout.
 myTabTheme = def { fontName            = myFont
-                 , activeColor         = "#46d9ff"
+                 , activeColor         = "#bd93f9"
                  , inactiveColor       = "#313846"
-                 , activeBorderColor   = "#46d9ff"
+                 , activeBorderColor   = "#bd93f9"
                  , inactiveBorderColor = "#282c34"
                  , activeTextColor     = "#282c34"
                  , inactiveTextColor   = "#d0d0d0"
