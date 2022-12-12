@@ -1,0 +1,12 @@
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+
+ <qemu:commandline>
+	<qemu:arg value='-object'/>
+	<qemu:arg value='input-linux,id=kbd,evdev=/dev/input/by-id/usb-Corsair_Corsair_Gaming_K55_RGB_Keyboard_AF6510E85DF81A35F5001C0540048000-event-kbd,grab_all=on,repeat=on'/>
+	<qemu:arg value='-object'/>
+	<qemu:arg value='input-linux,id=mouse,evdev=/dev/input/by-id/usb-Razer_Razer_Basilisk_V3-event-mouse'/>
+	<qemu:arg value='-object'/>
+	<qemu:arg value='input-linux,id=kbd1,evdev=/dev/input/by-id/usb-Razer_Razer_Basilisk_V3-if01-event-kbd,grab_all=on,repeat=on'/>
+	<qemu:arg value='-object'/>
+	<qemu:arg value='input-linux,id=kbd2,evdev=/dev/input/by-id/usb-Razer_Razer_Basilisk_V3-if02-event-kbd,grab_all=on,repeat=on'/>
+  </qemu:commandline>

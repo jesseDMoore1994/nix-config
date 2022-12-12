@@ -3,7 +3,7 @@
   users.users = {
     jmoore = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "docker" ];
       shell = pkgs.zsh;
     };
   };
