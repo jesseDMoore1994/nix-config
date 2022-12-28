@@ -6,7 +6,7 @@
   # This is using an age key that is expected to already be in the filesystem
   sops.age.keyFile = "/home/jmoore/.config/sops/age/keys.txt";
   # This will generate a new key if the key specified above does not exist
-  sops.age.generateKey = true;
+  #sops.age.generateKey = true;
   # This is the actual specification of the secrets.
   sops.secrets.pia-auth = { };
   sops.secrets.pia-auth.mode = "0440";

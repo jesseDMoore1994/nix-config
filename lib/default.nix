@@ -1,8 +1,12 @@
 { nixpkgs, home-manager, nur, sops-nix, ... }:
 
 rec {
-  systemPkgs = system: import nixpkgs {
+  systemPkgs = 
+  { system
+  , overlays ? []
+  }: import nixpkgs {
     system = system;
+    overlays = overlays;
     config.allowUnfreePredicate = (pkg:
       builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
         "discord"
@@ -26,7 +30,6 @@ rec {
     }: home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs;
       modules = [
-        { nixpkgs.overlays = [ nur.overlay ]; }
         userConfig
       ] ++ displayConfig ++ customModules;
     };

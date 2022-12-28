@@ -39,6 +39,7 @@
 
   networking.useDHCP = lib.mkDefault true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.opengl.enable = true;
   networking.hostName = "asmodeus"; # Define your hostname.
   networking.networkmanager.enable = true;
   time.timeZone = "America/Chicago";

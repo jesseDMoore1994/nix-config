@@ -31,6 +31,8 @@
   # CHANGE: add your own user here
   users.groups.libvirtd.members = [ "root" "jmoore" ];
 
+  networking.firewall.checkReversePath = false;
+
   virtualisation.libvirtd.qemu.swtpm.enable = true;
 
   # to find your nix store paths

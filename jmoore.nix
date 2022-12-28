@@ -3,6 +3,7 @@
 {
   imports = [
     ./home-modules/bat
+    ./home-modules/dunst
     ./home-modules/exa
     ./home-modules/fd
     ./home-modules/firefox
@@ -20,6 +21,7 @@
     username = "jmoore";
     homeDirectory = "/home/jmoore";
     packages = with pkgs; [
+      betterlockscreen
       btop
       discord
       git
@@ -28,6 +30,7 @@
       neofetch
       niv
       openconnect
+      pipes-rs
       python3
       ranger
       teams

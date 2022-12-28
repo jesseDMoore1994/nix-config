@@ -41,6 +41,8 @@ import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
+import Graphics.X11.ExtraTypes.XF86
+
 myFont = "xft:Hasklug Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
 
 --startuphook
@@ -158,7 +160,11 @@ myConfig = defaultConfig
   `additionalKeys`
   [ ( (mod4Mask,xK_r), compileRestart True)
   , ( (mod4Mask,xK_d), spawn "rofi -modi drun -show drun" )
-  , ( (mod4Mask,xK_q), restart "xmonad" True ) ]
+  , ( (mod4Mask,xK_q), restart "xmonad" True )
+  , ( (0,xF86XK_AudioMute), spawn "exec amixer set Master toggle" )
+  , ( (0,xF86XK_AudioLowerVolume), spawn "exec amixer set Master 4%-" )
+  , ( (0,xF86XK_AudioRaiseVolume), spawn "exec amixer set Master 4%+" )
+  , ( (mod4Mask,xK_x), spawn "betterlockscreen -l pixel" ) ]
 
 compileRestart resume = do
   dirs  <- asks directories
