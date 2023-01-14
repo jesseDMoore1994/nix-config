@@ -2,7 +2,7 @@
   imports = [ (modulesPath + "/profiles/headless.nix") ];
   # Make sure that we still have admin access to the machine
   services.openssh.enable = true;
-  networking.hostName = "nixvm";
+  networking.hostName = "golem";
   networking.firewall.allowedTCPPorts = [ 22 ];
   system.stateVersion = "23.05";
   time.timeZone = "America/Chicago";

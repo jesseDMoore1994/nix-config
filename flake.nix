@@ -20,7 +20,7 @@
         sops-nix = sops-nix;
       };
       personalPackageSet = lib.systemPkgs {
-        system = "x86_64-linux"; 
+        system = "x86_64-linux";
         overlays = [ nur.overlay ];
       };
     in
@@ -28,21 +28,17 @@
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       homeManagerConfigurations = lib.createHomeManagerConfigs personalPackageSet {
         "jmoore@jmoore-nixos" = {
-          userConfig = import ./jmoore.nix;
-          displayConfig = [
-            {
-              imports = [ ./home-modules/i3 ];
-            }
-          ];
+          userConfig = import ./jmoore.nix {
+            pkgs = personalPackageSet;
+            additionalModules = [ ./home-modules/i3 ];
+          };
           pkgs = personalPackageSet;
         };
         "jmoore@asmodeus" = {
-          userConfig = import ./jmoore.nix;
-          displayConfig = [
-            {
-              imports = [ ./home-modules/xmonad ];
-            }
-          ];
+          userConfig = import ./jmoore.nix {
+            pkgs = personalPackageSet;
+            additionalModules = [ ./home-modules/xmonad ];
+          };
           pkgs = personalPackageSet;
         };
       };
@@ -89,7 +85,7 @@
           pkgs = personalPackageSet;
         };
       };
-      packages.x86_64-linux.vm = nixos-generators.nixosGenerate {
+      packages.x86_64-linux.golem = nixos-generators.nixosGenerate {
         pkgs = personalPackageSet;
         system = personalPackageSet.system;
         modules = [
@@ -99,11 +95,13 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jmoore = import ./jmoore.nix;
+            home-manager.users.jmoore = import ./jmoore.nix {
+              pkgs = personalPackageSet;
+            };
           }
           {
             imports = [
-              ./hardware-configs/headless-vm.nix
+              ./hardware-configs/golem.nix
               ./system-modules/nix
               ./system-modules/openssh
               ./system-modules/openvpn
@@ -114,6 +112,66 @@
           }
         ];
         format = "vm";
+      };
+      packages.x86_64-linux.spectre = nixos-generators.nixosGenerate {
+        pkgs = personalPackageSet;
+        system = personalPackageSet.system;
+        modules = [
+          sops-nix.nixosModules.sops
+          nur.nixosModules.nur
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jmoore = import ./jmoore.nix {
+              pkgs = personalPackageSet;
+              additionalModules = [ ./home-modules/xmonad ];
+            };
+          }
+          {
+            imports = [
+              ./hardware-configs/spectre.nix
+              ./system-modules/nix
+              #./system-modules/nvidia
+              ./system-modules/sops
+              ./system-modules/sound
+              #./system-modules/tailscale
+              ./system-modules/users
+              ./system-modules/virtualization
+            ];
+          }
+        ];
+        format = "iso";
+      };
+      packages.x86_64-linux.onie_installer = nixos-generators.nixosGenerate {
+        pkgs = personalPackageSet;
+        system = personalPackageSet.system;
+        modules = [
+          sops-nix.nixosModules.sops
+          nur.nixosModules.nur
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jmoore = import ./jmoore.nix {
+              pkgs = personalPackageSet;
+              additionalModules = [ ./home-modules/xmonad ];
+            };
+          }
+          {
+            imports = [
+              ./hardware-configs/spectre.nix
+              ./system-modules/nix
+              #./system-modules/nvidia
+              ./system-modules/sops
+              ./system-modules/sound
+              #./system-modules/tailscale
+              ./system-modules/users
+              ./system-modules/virtualization
+            ];
+          }
+        ];
+        format = "kexec-bundle";
       };
     };
 }

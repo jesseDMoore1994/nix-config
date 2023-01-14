@@ -1,37 +1,33 @@
 { nixpkgs, home-manager, nur, sops-nix, ... }:
 
 rec {
-  systemPkgs = 
-  { system
-  , overlays ? []
-  }: import nixpkgs {
-    system = system;
-    overlays = overlays;
-    config.allowUnfreePredicate = (pkg:
-      builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
-        "discord"
-        "nvidia"
-        "nvidia-x11"
-        "nvidia-settings"
-        "teams"
-        "steam"
-        "steam-original"
-        "steam-run"
-        "steam-runtime"
-      ]
-    );
-  };
+  systemPkgs =
+    { system
+    , overlays ? [ ]
+    }: import nixpkgs {
+      system = system;
+      overlays = overlays;
+      config.allowUnfreePredicate = (pkg:
+        builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
+          "discord"
+          "nvidia"
+          "nvidia-x11"
+          "nvidia-settings"
+          "teams"
+          "steam"
+          "steam-original"
+          "steam-run"
+          "steam-runtime"
+        ]
+      );
+    };
 
   createHomeManagerConfig =
-    { userConfig
-    , displayConfig ? [ ]
-    , customModules ? [ ]
-    , pkgs ? import nixpkgs
-    }: home-manager.lib.homeManagerConfiguration {
+    { userConfig, pkgs }: home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs;
       modules = [
         userConfig
-      ] ++ displayConfig ++ customModules;
+      ];
     };
 
   createHomeManagerConfigs = pkgs: configs: pkgs.lib.attrsets.mapAttrs
