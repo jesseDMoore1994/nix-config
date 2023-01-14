@@ -41,6 +41,15 @@
           };
           pkgs = personalPackageSet;
         };
+        "jmoore@baphomet" = {
+          userConfig = import ./jmoore.nix;
+          displayConfig = [
+            {
+              imports = [ ./home-modules/xmonad ];
+            }
+          ];
+          pkgs = personalPackageSet;
+        };
       };
       nixosConfigurations = lib.createNixosSystems personalPackageSet {
         jmoore-nixos = {
@@ -78,6 +87,30 @@
               #./system-modules/tailscale
               ./system-modules/users
               ./system-modules/virtualization
+              ./system-modules/xserver
+            ];
+          };
+          system = personalPackageSet.system;
+          pkgs = personalPackageSet;
+        };
+        baphomet = {
+          hardwareConfig = {
+            imports = [
+              ./hardware-configs/baphomet.nix
+              #./system-modules/amd
+              #./system-modules/lightdm
+              ./system-modules/nix
+              #./system-modules/nvidia
+              ./system-modules/openssh
+              #./system-modules/openvpn
+              #./system-modules/pci-passthrough
+              #./system-modules/sops
+              ./system-modules/sound
+              #./system-modules/steam
+              #./system-modules/tailscale
+              ./system-modules/users
+              #./system-modules/virtualization
+              ./system-modules/xfce
               ./system-modules/xserver
             ];
           };
