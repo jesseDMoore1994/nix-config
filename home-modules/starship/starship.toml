@@ -1,6 +1,6 @@
 format = """
 [](#50FA7B)\
-$username\
+$username$hostname\
 [](bg:#6272A4 fg:#50FA7B)\
 $directory\
 [](fg:#6272A4 bg:#FFB86C)\
@@ -33,7 +33,13 @@ $time\
 show_always = true
 style_user = "bg:#50FA7B fg:#44475A"
 style_root = "bg:#50FA7B fg:#44475A"
-format = '[$user ]($style)'
+format = '[$user]($style)'
+
+# You can also replace your username with a neat symbol like  to save some space
+[hostname]
+style = "bg:#50FA7B fg:#44475A"
+ssh_only = false
+format = '[@$hostname ]($style)'
 
 [directory]
 style = "bg:#6272A4 fg:#F8F8F2"

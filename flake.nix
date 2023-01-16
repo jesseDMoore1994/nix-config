@@ -42,12 +42,10 @@
           pkgs = personalPackageSet;
         };
         "jmoore@baphomet" = {
-          userConfig = import ./jmoore.nix;
-          displayConfig = [
-            {
-              imports = [ ./home-modules/xmonad ];
-            }
-          ];
+          userConfig = import ./jmoore.nix {
+            pkgs = personalPackageSet;
+            additionalModules = [ ./home-modules/xmonad ];
+          };
           pkgs = personalPackageSet;
         };
       };
@@ -106,10 +104,10 @@
               #./system-modules/pci-passthrough
               #./system-modules/sops
               ./system-modules/sound
-              #./system-modules/steam
-              #./system-modules/tailscale
+              ./system-modules/steam
+              ./system-modules/tailscale
               ./system-modules/users
-              #./system-modules/virtualization
+              ./system-modules/virtualization
               ./system-modules/xfce
               ./system-modules/xserver
             ];
