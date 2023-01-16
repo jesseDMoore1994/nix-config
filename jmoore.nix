@@ -33,6 +33,7 @@
       pipes-rs
       python3
       ranger
+      scrot
       teams
       vivid
       wget

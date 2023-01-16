@@ -31,7 +31,7 @@
   # CHANGE: add your own user here
   users.groups.libvirtd.members = [ "root" "jmoore" ];
 
-  networking.firewall.checkReversePath = false;
+  #networking.firewall.checkReversePath = false;
 
   virtualisation.libvirtd.qemu.swtpm.enable = true;
 
