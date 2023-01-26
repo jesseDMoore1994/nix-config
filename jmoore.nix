@@ -1,4 +1,4 @@
-{ pkgs, additionalModules ? [], ... }:
+{ pkgs, additionalModules ? [ ], ... }:
 
 {
   imports = [
@@ -16,7 +16,7 @@
     ./home-modules/tmux
     ./home-modules/zoxide
     ./home-modules/zsh
-  ] ++  additionalModules;
+  ] ++ additionalModules;
   home = {
     username = "jmoore";
     homeDirectory = "/home/jmoore";

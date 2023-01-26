@@ -27,7 +27,7 @@
       autoLogin.user = "jmoore";
       # Use a fake session. The actual session is managed by Home Manager.
       defaultSession = "none+fake";
-      session = [ { manage = "window"; name = "fake"; start = ""; } ];
+      session = [{ manage = "window"; name = "fake"; start = ""; }];
     };
   };
   security.sudo.extraRules = [
