@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }: {
-  imports = [
-    "${modulesPath}/installer/netboot/netboot.nix"
-  ];
+  #imports = [
+  #  "${modulesPath}/installer/netboot/netboot.nix"
+  #];
 
   # use the latest Linux kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;

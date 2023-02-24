@@ -29,6 +29,7 @@
       jq
       neofetch
       niv
+      obs-studio
       openconnect
       pipes-rs
       python3
