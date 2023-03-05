@@ -174,35 +174,35 @@
         ];
         format = "iso";
       };
-      packages.x86_64-linux.onie_installer = nixos-generators.nixosGenerate {
-        pkgs = personalPackageSet;
-        system = personalPackageSet.system;
-        modules = [
-          sops-nix.nixosModules.sops
-          nur.nixosModules.nur
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.jmoore = import ./jmoore.nix {
-              pkgs = personalPackageSet;
-              additionalModules = [ ./home-modules/xmonad ];
-            };
-          }
-          {
-            imports = [
-              ./hardware-configs/spectre.nix
-              ./system-modules/nix
-              #./system-modules/nvidia
-              ./system-modules/sops
-              ./system-modules/sound
-              #./system-modules/tailscale
-              ./system-modules/users
-              ./system-modules/virtualization
-            ];
-          }
-        ];
-        format = "kexec-bundle";
-      };
+      # packages.x86_64-linux.onie_installer = nixos-generators.nixosGenerate {
+      #   pkgs = personalPackageSet;
+      #   system = personalPackageSet.system;
+      #   modules = [
+      #     sops-nix.nixosModules.sops
+      #     nur.nixosModules.nur
+      #     home-manager.nixosModules.home-manager
+      #     {
+      #       home-manager.useGlobalPkgs = true;
+      #       home-manager.useUserPackages = true;
+      #       home-manager.users.jmoore = import ./jmoore.nix {
+      #         pkgs = personalPackageSet;
+      #         additionalModules = [ ./home-modules/xmonad ];
+      #       };
+      #     }
+      #     {
+      #       imports = [
+      #         ./hardware-configs/spectre.nix
+      #         ./system-modules/nix
+      #         #./system-modules/nvidia
+      #         ./system-modules/sops
+      #         ./system-modules/sound
+      #         #./system-modules/tailscale
+      #         ./system-modules/users
+      #         ./system-modules/virtualization
+      #       ];
+      #     }
+      #   ];
+      #   format = "kexec-bundle";
+      # };
     };
 }

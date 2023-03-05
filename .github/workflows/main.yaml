@@ -24,7 +24,7 @@ jobs:
       - name: check-flake
         run: |
           set -xeuo pipefail
-          nix flake check --impure
+          nix flake check
       - name: push
         run: |
           git push origin HEAD
