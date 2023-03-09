@@ -3,22 +3,13 @@
 rec {
   systemPkgs =
     { system
+    , unfree
     , overlays ? [ ]
     }: import nixpkgs {
       system = system;
       overlays = overlays;
       config.allowUnfreePredicate = (pkg:
-        builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) [
-          "discord"
-          "nvidia"
-          "nvidia-x11"
-          "nvidia-settings"
-          "teams"
-          "steam"
-          "steam-original"
-          "steam-run"
-          "steam-runtime"
-        ]
+        builtins.elem (pkg.pname or (builtins.parseDrvName pkg.name).name) unfree
       );
     };
 

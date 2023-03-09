@@ -21,6 +21,17 @@
       };
       personalPackageSet = lib.systemPkgs {
         system = "x86_64-linux";
+        unfree = [
+          "discord"
+          "nvidia"
+          "nvidia-x11"
+          "nvidia-settings"
+          "teams"
+          "steam"
+          "steam-original"
+          "steam-run"
+          "steam-runtime"
+        ];
         overlays = [ nur.overlay ];
       };
       nixModule = import ./system-modules/nix inputs;
