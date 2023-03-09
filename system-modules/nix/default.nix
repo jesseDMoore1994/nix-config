@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+inputs: { config, pkgs, ... }:
 {
   nix.settings.substituters = [
     "https://nixcache.reflex-frp.org"
@@ -14,5 +14,6 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
   nix.package = pkgs.nixFlakes;
 }

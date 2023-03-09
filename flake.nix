@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, nur, sops-nix, nixos-generators, ... }:
+  outputs = { nixpkgs, home-manager, nur, sops-nix, nixos-generators, ... }@inputs:
     let
       lib = import ./lib {
         nixpkgs = nixpkgs;
@@ -23,6 +23,7 @@
         system = "x86_64-linux";
         overlays = [ nur.overlay ];
       };
+      nixModule = import ./system-modules/nix inputs;
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
@@ -74,7 +75,7 @@
               ./hardware-configs/asmodeus.nix
               #./system-modules/flatpak
               ./system-modules/lightdm
-              ./system-modules/nix
+              nixModule
               ./system-modules/nvidia
               ./system-modules/openssh
               ./system-modules/openvpn
@@ -97,7 +98,7 @@
               ./hardware-configs/baphomet.nix
               #./system-modules/amd
               #./system-modules/lightdm
-              ./system-modules/nix
+              nixModule
               #./system-modules/nvidia
               ./system-modules/openssh
               ./system-modules/openvpn
@@ -133,7 +134,7 @@
           {
             imports = [
               ./hardware-configs/golem.nix
-              ./system-modules/nix
+              nixModule
               ./system-modules/openssh
               ./system-modules/openvpn
               ./system-modules/sops
