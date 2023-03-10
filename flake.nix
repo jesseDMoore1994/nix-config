@@ -67,7 +67,7 @@
             imports = [
               ./hardware-configs/jmoore-nixos.nix
               ./system-modules/lightdm
-              ./system-modules/nix
+              nixModule
               ./system-modules/openssh
               ./system-modules/openvpn
               ./system-modules/sops
@@ -174,7 +174,7 @@
           {
             imports = [
               ./hardware-configs/spectre.nix
-              ./system-modules/nix
+              nixModule
               #./system-modules/nvidia
               ./system-modules/sops
               ./system-modules/sound
