@@ -39,13 +39,6 @@
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       homeManagerConfigurations = lib.createHomeManagerConfigs personalPackageSet {
-        "jmoore@jmoore-nixos" = {
-          userConfig = import ./jmoore.nix {
-            pkgs = personalPackageSet;
-            additionalModules = [ ./home-modules/i3 ];
-          };
-          pkgs = personalPackageSet;
-        };
         "jmoore@asmodeus" = {
           userConfig = import ./jmoore.nix {
             pkgs = personalPackageSet;
@@ -62,24 +55,6 @@
         };
       };
       nixosConfigurations = lib.createNixosSystems personalPackageSet {
-        jmoore-nixos = {
-          hardwareConfig = {
-            imports = [
-              ./hardware-configs/jmoore-nixos.nix
-              ./system-modules/lightdm
-              nixModule
-              ./system-modules/openssh
-              ./system-modules/openvpn
-              ./system-modules/sops
-              ./system-modules/tailscale
-              ./system-modules/users
-              ./system-modules/virtualization
-              ./system-modules/xserver
-            ];
-          };
-          system = personalPackageSet.system;
-          pkgs = personalPackageSet;
-        };
         asmodeus = {
           hardwareConfig = {
             imports = [
