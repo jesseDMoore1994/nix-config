@@ -82,17 +82,13 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/baphomet.nix
-              #./system-modules/amd
-              #./system-modules/lightdm
               nixModule
-              #./system-modules/nvidia
               ./system-modules/openssh
               ./system-modules/openvpn
-              #./system-modules/pci-passthrough
               ./system-modules/sops
               ./system-modules/sound
               ./system-modules/steam
-              #./system-modules/tailscale
+              ./system-modules/tailscale
               ./system-modules/users
               ./system-modules/virtualization
               ./system-modules/xfce

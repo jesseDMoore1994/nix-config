@@ -11,6 +11,7 @@
     ./home-modules/kitty
     ./home-modules/neovim
     ./home-modules/nix-direnv
+    ./home-modules/nushell
     ./home-modules/rofi
     ./home-modules/starship
     ./home-modules/tmux
