@@ -88,7 +88,7 @@
               ./system-modules/sops
               ./system-modules/sound
               ./system-modules/steam
-              ./system-modules/tailscale
+              #./system-modules/tailscale
               ./system-modules/users
               ./system-modules/virtualization
               ./system-modules/xfce

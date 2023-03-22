@@ -9,7 +9,6 @@
       alias ncau = do {nc; ./scripts/apply_user.hs; cd -};
       alias ncu = do {nc; ./scripts/update.hs; cd -};
       alias icat = kitty +kitten icat;
-      alias icat = kitty +kitten icat;
 
       let-env config = {
         show_banner: false
