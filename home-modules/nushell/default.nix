@@ -3,12 +3,22 @@
   programs.nushell = {
     enable = true;
     extraConfig = ''
-      alias work = ssh jmoore@jmoore-arch.adtran.com;
+      alias ga = git add
+      alias gc = git commit
+      alias gd = git diff
+      alias gf = git fetch
+      alias gpl = git pull
+      alias gph = git push
+      alias gs = git status
+      alias gl = git log
+      alias icat = kitty +kitten icat;
+      alias nb = nix build;
+      alias nbl = nix build -L;
       alias nc = cd $"($env.HOME)/projects/nix-config";
       alias ncas = do {nc; ./scripts/apply_system.hs; cd -};
       alias ncau = do {nc; ./scripts/apply_user.hs; cd -};
       alias ncu = do {nc; ./scripts/update.hs; cd -};
-      alias icat = kitty +kitten icat;
+      alias work = ssh jmoore@jmoore-arch.adtran.com;
 
       let-env config = {
         show_banner: false
