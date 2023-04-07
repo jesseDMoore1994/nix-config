@@ -10,17 +10,23 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    attic = {
+      url = "github:zhaofengli/attic";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { nixpkgs, home-manager, nur, sops-nix, nixos-generators, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nur, sops-nix, nixos-generators, attic, ... }@inputs:
     let
+      system = "x86_64-linux";
       lib = import ./lib {
         nixpkgs = nixpkgs;
         home-manager = home-manager;
         nur = nur;
         sops-nix = sops-nix;
+        attic = attic;
       };
       personalPackageSet = lib.systemPkgs {
-        system = "x86_64-linux";
+        system = system;
         unfree = [
           "discord"
           "nvidia"
@@ -32,12 +38,15 @@
           "steam-run"
           "steam-runtime"
         ];
-        overlays = [ nur.overlay ];
+        overlays = [ nur.overlay attic.overlays.default ];
       };
       nixModule = import ./system-modules/nix inputs;
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      lib = lib;
+      personalPackageSet = personalPackageSet;
+      nixModule = nixModule;
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       homeManagerConfigurations = lib.createHomeManagerConfigs personalPackageSet {
         "jmoore@asmodeus" = {
           userConfig = import ./jmoore.nix {
@@ -59,6 +68,7 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/asmodeus.nix
+              ./system-modules/atticd
               #./system-modules/flatpak
               ./system-modules/lightdm
               nixModule
@@ -108,7 +118,6 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
             home-manager.users.jmoore = import ./jmoore.nix {
               pkgs = personalPackageSet;
             };

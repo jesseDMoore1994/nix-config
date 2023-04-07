@@ -16,4 +16,8 @@
   sops.secrets.pia-config.mode = "0440";
   sops.secrets.pia-config.owner = config.users.users.jmoore.name;
   sops.secrets.pia-config.group = "wheel";
+  sops.secrets."atticd.env" = { };
+  sops.secrets."atticd.env".mode = "0440";
+  sops.secrets."atticd.env".owner = config.users.users.jmoore.name;
+  sops.secrets."atticd.env".group = "wheel";
 }

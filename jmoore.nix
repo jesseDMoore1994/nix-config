@@ -1,4 +1,4 @@
-{ pkgs, additionalModules ? [ ], ... }:
+{ pkgs, additionalModules ? [ ], additionalPackages ? [ ], ... }:
 
 {
   imports = [
@@ -38,8 +38,9 @@
       scrot
       teams
       vivid
+      vlc
       wget
-    ];
+    ] ++ additionalPackages;
     stateVersion = "21.11";
   };
   programs.home-manager.enable = true;
