@@ -32,6 +32,10 @@
         do
           sleep 1
         done
+        until nix path-info -r $(nix build .#homeManagerConfigurations.jmoore@$MACHINE.activationPackage --print-out-paths) | xargs attic push jmoore
+        do
+          sleep 1
+        done
       done
       popd
     '';
