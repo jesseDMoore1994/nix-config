@@ -43,9 +43,6 @@
       nixModule = import ./system-modules/nix inputs;
     in
     {
-      lib = lib;
-      personalPackageSet = personalPackageSet;
-      nixModule = nixModule;
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       homeManagerConfigurations = lib.createHomeManagerConfigs personalPackageSet {
         "jmoore@asmodeus" = {
@@ -69,9 +66,9 @@
             imports = [
               ./hardware-configs/asmodeus.nix
               ./system-modules/atticd
-              #./system-modules/flatpak
               ./system-modules/lightdm
               nixModule
+              ./system-modules/network
               ./system-modules/nvidia
               ./system-modules/openssh
               ./system-modules/openvpn
@@ -79,6 +76,7 @@
               ./system-modules/sops
               ./system-modules/sound
               ./system-modules/steam
+              ./system-modules/system-builder
               ./system-modules/tailscale
               ./system-modules/users
               ./system-modules/virtualization
@@ -93,6 +91,7 @@
             imports = [
               ./hardware-configs/baphomet.nix
               nixModule
+              ./system-modules/network
               ./system-modules/openssh
               ./system-modules/openvpn
               ./system-modules/sops
@@ -145,7 +144,6 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
             home-manager.users.jmoore = import ./jmoore.nix {
               pkgs = personalPackageSet;
               additionalModules = [ ./home-modules/xmonad ];
@@ -155,10 +153,8 @@
             imports = [
               ./hardware-configs/spectre.nix
               nixModule
-              #./system-modules/nvidia
               ./system-modules/sops
               ./system-modules/sound
-              #./system-modules/tailscale
               ./system-modules/users
               ./system-modules/virtualization
             ];
@@ -166,35 +162,5 @@
         ];
         format = "iso";
       };
-      # packages.x86_64-linux.onie_installer = nixos-generators.nixosGenerate {
-      #   pkgs = personalPackageSet;
-      #   system = personalPackageSet.system;
-      #   modules = [
-      #     sops-nix.nixosModules.sops
-      #     nur.nixosModules.nur
-      #     home-manager.nixosModules.home-manager
-      #     {
-      #       home-manager.useGlobalPkgs = true;
-      #       home-manager.useUserPackages = true;
-      #       home-manager.users.jmoore = import ./jmoore.nix {
-      #         pkgs = personalPackageSet;
-      #         additionalModules = [ ./home-modules/xmonad ];
-      #       };
-      #     }
-      #     {
-      #       imports = [
-      #         ./hardware-configs/spectre.nix
-      #         ./system-modules/nix
-      #         #./system-modules/nvidia
-      #         ./system-modules/sops
-      #         ./system-modules/sound
-      #         #./system-modules/tailscale
-      #         ./system-modules/users
-      #         ./system-modules/virtualization
-      #       ];
-      #     }
-      #   ];
-      #   format = "kexec-bundle";
-      # };
     };
 }

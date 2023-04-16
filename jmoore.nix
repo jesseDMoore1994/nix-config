@@ -22,6 +22,7 @@
     username = "jmoore";
     homeDirectory = "/home/jmoore";
     packages = with pkgs; [
+      attic
       betterlockscreen
       btop
       discord

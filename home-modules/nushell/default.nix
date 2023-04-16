@@ -83,6 +83,10 @@
         ]
       }
 
+      cat /run/secrets/atticd.root | lines | str trim | str replace -a "\"" "" | split column "=" | let-env $in.column1.0 = $in.column2.0
+      attic login asmodeus http://asmodeus:8080 $env.ATTIC_ROOT_TOKEN out+err> /dev/null
+      attic use jmoore out+err> /dev/null
+
       let-env STARSHIP_SHELL = "nu"
       let-env STARSHIP_SESSION_KEY = (random chars -l 16)
       let-env PROMPT_MULTILINE_INDICATOR = (^/home/jmoore/.nix-profile/bin/starship prompt --continuation)

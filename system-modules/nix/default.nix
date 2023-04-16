@@ -1,10 +1,7 @@
 inputs: { config, pkgs, ... }:
 {
-  nix.settings.substituters = [
-    "https://nixcache.reflex-frp.org"
-  ];
-  nix.settings.trusted-public-keys = [
-    "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
+  nix.settings.trusted-substituters = [
+    "http://asmodeus:8080/jmoore"
   ];
   nix.extraOptions = ''
     experimental-features = nix-command flakes
