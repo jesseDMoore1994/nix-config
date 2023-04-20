@@ -28,11 +28,13 @@
       MACHINES="asmodeus baphomet"
       for MACHINE in $MACHINES
       do
-        until nix path-info -r $(nix build .#nixosConfigurations.$MACHINE.config.system.build.toplevel --print-out-paths) | xargs attic push jmoore
+        echo "Storing system config for $MACHINE"
+        until nix-store -qR $(nix build .#nixosConfigurations.$MACHINE.config.system.build.toplevel --print-out-paths) | xargs attic push jmoore
         do
           sleep 1
         done
-        until nix path-info -r $(nix build .#homeManagerConfigurations.jmoore@$MACHINE.activationPackage --print-out-paths) | xargs attic push jmoore
+        echo "Storing home config for $MACHINE"
+        until nix-store -qR $(nix build .#homeManagerConfigurations.jmoore@$MACHINE.activationPackage --print-out-paths) | xargs attic push jmoore
         do
           sleep 1
         done
