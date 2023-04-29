@@ -10,12 +10,9 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    attic = {
-      url = "github:zhaofengli/attic";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-serve-ng.url = "github:aristanetworks/nix-serve-ng";
   };
-  outputs = { nixpkgs, home-manager, nur, sops-nix, nixos-generators, attic, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nur, sops-nix, nixos-generators, nix-serve-ng, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = import ./lib {
@@ -23,7 +20,7 @@
         home-manager = home-manager;
         nur = nur;
         sops-nix = sops-nix;
-        attic = attic;
+        nix-serve-ng = nix-serve-ng;
       };
       personalPackageSet = lib.systemPkgs {
         system = system;
@@ -38,7 +35,7 @@
           "steam-run"
           "steam-runtime"
         ];
-        overlays = [ nur.overlay attic.overlays.default ];
+        overlays = [ nur.overlay ];
       };
       nixModule = import ./system-modules/nix inputs;
     in
@@ -65,10 +62,10 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/asmodeus.nix
-              ./system-modules/atticd
               ./system-modules/lightdm
               nixModule
               ./system-modules/network
+              ./system-modules/nix-serve-ng
               ./system-modules/nvidia
               ./system-modules/openssh
               ./system-modules/openvpn

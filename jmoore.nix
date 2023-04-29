@@ -10,6 +10,7 @@
     ./home-modules/fonts
     ./home-modules/kitty
     ./home-modules/neovim
+    ./home-modules/nix
     ./home-modules/nix-direnv
     ./home-modules/nushell
     ./home-modules/rofi
@@ -22,7 +23,6 @@
     username = "jmoore";
     homeDirectory = "/home/jmoore";
     packages = with pkgs; [
-      attic
       betterlockscreen
       btop
       discord

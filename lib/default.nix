@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, nur, sops-nix, attic, ... }:
+{ nixpkgs, home-manager, nur, sops-nix, nix-serve-ng, ... }:
 
 rec {
   systemPkgs =
@@ -33,7 +33,7 @@ rec {
       system = system;
       pkgs = pkgs;
       modules = [
-        attic.nixosModules.atticd
+        nix-serve-ng.nixosModules.default
         sops-nix.nixosModules.sops
         hardwareConfig
       ];
