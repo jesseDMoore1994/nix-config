@@ -2,12 +2,12 @@
 {
   systemd.timers."system-builder" = {
     wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "*-*-* 01:00:00";
-        Unit = "system-builder.service";
-      };
+    timerConfig = {
+      OnCalendar = "*-*-* 01:00:00";
+      Unit = "system-builder.service";
+    };
   };
-  
+
   systemd.services."system-builder" = {
     path = [ pkgs.git pkgs.nettools pkgs.nix ];
     script = ''

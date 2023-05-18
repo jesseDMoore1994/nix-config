@@ -3,13 +3,8 @@
   users.users = {
     jmoore = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "docker" "atticd" ];
+      extraGroups = [ "wheel" "docker" ];
       shell = pkgs.nushell;
     };
-    atticd = {
-      isSystemUser = true;
-      group = "atticd";
-    };
   };
-  users.groups.atticd = {};
 }
