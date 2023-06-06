@@ -40,6 +40,7 @@
       nixModule = import ./system-modules/nix inputs;
     in
     {
+      lib = lib;
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       homeManagerConfigurations = lib.createHomeManagerConfigs personalPackageSet {
         "jmoore@asmodeus" = {
