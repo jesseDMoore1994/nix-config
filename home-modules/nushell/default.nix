@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+script_dir: { pkgs, config, ... }:
 {
   programs.nushell = {
     enable = true;
@@ -15,9 +15,9 @@
       alias nb = nix build;
       alias nbl = nix build -L;
       alias nc = cd $"($env.HOME)/projects/nix-config";
-      alias ncas = do {nc; ./scripts/apply_system.hs; cd -};
-      alias ncau = do {nc; ./scripts/apply_user.hs; cd -};
-      alias ncu = do {nc; ./scripts/update.hs; cd -};
+      alias ncas = do {nc; ${script_dir}/apply_system.hs; cd -};
+      alias ncau = do {nc; ${script_dir}/apply_user.hs; cd -};
+      alias ncu = do {nc; ${script_dir}/update.hs; cd -};
       alias work = ssh jmoore@jmoore-arch.adtran.com;
 
       let-env config = {
