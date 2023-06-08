@@ -5,8 +5,6 @@
     enable = true;
   };
 
-  # move background somewhere I can get it
-  home.file.".background-image".source = ../../wallpapers/nixos_dracula.png;
   programs.feh.enable = true;
 
   programs.xmobar.enable = true;

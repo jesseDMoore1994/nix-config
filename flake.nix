@@ -37,22 +37,27 @@
         ];
         overlays = [ nur.overlay ];
       };
-      nixModule = import ./system-modules/nix inputs;
+      homeModules = lib.getModulePaths personalPackageSet ./home-modules;
+      systemModules = lib.getModulePaths personalPackageSet ./system-modules;
+      homeConfig = import ./jmoore.nix;
+      nixModule = systemModules.nix inputs;
     in
     {
+      homeModules = homeModules;
+      systemModules = systemModules;
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       homeManagerConfigurations = lib.createHomeManagerConfigs personalPackageSet {
         "jmoore@asmodeus" = {
-          userConfig = import ./jmoore.nix {
+          userConfig = homeConfig {
             pkgs = personalPackageSet;
-            additionalModules = [ ./home-modules/xmonad ];
+            additionalModules = [ homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
         };
         "jmoore@baphomet" = {
-          userConfig = import ./jmoore.nix {
+          userConfig = homeConfig {
             pkgs = personalPackageSet;
-            additionalModules = [ ./home-modules/xmonad ];
+            additionalModules = [ homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
         };
@@ -62,22 +67,22 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/asmodeus.nix
-              ./system-modules/lightdm
+              systemModules.lightdm
               nixModule
-              ./system-modules/network
-              ./system-modules/nix-serve-ng
-              ./system-modules/nvidia
-              ./system-modules/openssh
-              ./system-modules/openvpn
-              ./system-modules/pci-passthrough
-              ./system-modules/sops
-              ./system-modules/sound
-              ./system-modules/steam
-              ./system-modules/system-builder
-              ./system-modules/tailscale
-              ./system-modules/users
-              ./system-modules/virtualization
-              ./system-modules/xserver
+              systemModules.network
+              systemModules.nix-serve-ng
+              systemModules.nvidia
+              systemModules.openssh
+              systemModules.openvpn
+              systemModules.pci-passthrough
+              (systemModules.sops ./secrets/example.yaml)
+              systemModules.sound
+              systemModules.steam
+              systemModules.system-builder
+              systemModules.tailscale
+              systemModules.users
+              systemModules.virtualization
+              systemModules.xserver
             ];
           };
           system = personalPackageSet.system;
@@ -88,17 +93,17 @@
             imports = [
               ./hardware-configs/baphomet.nix
               nixModule
-              ./system-modules/network
-              ./system-modules/openssh
-              ./system-modules/openvpn
-              ./system-modules/sops
-              ./system-modules/sound
-              ./system-modules/steam
-              ./system-modules/tailscale
-              ./system-modules/users
-              ./system-modules/virtualization
-              ./system-modules/xfce
-              ./system-modules/xserver
+              systemModules.network
+              systemModules.openssh
+              systemModules.openvpn
+              systemModules.sops
+              systemModules.sound
+              systemModules.steam
+              systemModules.tailscale
+              systemModules.users
+              systemModules.virtualization
+              systemModules.xfce
+              systemModules.xserver
             ];
           };
           system = personalPackageSet.system;
@@ -114,7 +119,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.users.jmoore = import ./jmoore.nix {
+            home-manager.users.jmoore = homeConfig {
               pkgs = personalPackageSet;
             };
           }
@@ -122,11 +127,11 @@
             imports = [
               ./hardware-configs/golem.nix
               nixModule
-              ./system-modules/openssh
-              ./system-modules/openvpn
-              ./system-modules/sops
-              ./system-modules/users
-              ./system-modules/virtualization
+              systemModules.openssh
+              systemModules.openvpn
+              systemModules.sops
+              systemModules.users
+              systemModules.virtualization
             ];
           }
         ];
@@ -141,19 +146,19 @@
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.users.jmoore = import ./jmoore.nix {
+            home-manager.users.jmoore = homeConfig {
               pkgs = personalPackageSet;
-              additionalModules = [ ./home-modules/xmonad ];
+              additionalModules = [ homeModules.xmonad ];
             };
           }
           {
             imports = [
               ./hardware-configs/spectre.nix
               nixModule
-              ./system-modules/sops
-              ./system-modules/sound
-              ./system-modules/users
-              ./system-modules/virtualization
+              systemModules.sops
+              systemModules.sound
+              systemModules.users
+              systemModules.virtualization
             ];
           }
         ];

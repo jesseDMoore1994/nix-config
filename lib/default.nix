@@ -42,4 +42,8 @@ rec {
   createNixosSystems = pkgs: configs: pkgs.lib.attrsets.mapAttrs
     (name: value: createNixosSystem value)
     configs;
+
+  getModulePaths = pkgs: modules: pkgs.lib.attrsets.mapAttrs
+    (name: value: import (builtins.head value))
+    (pkgs.lib.attrsets.zipAttrs (map (n: {"${n}"= "${modules}/${n}";}) (builtins.attrNames (builtins.readDir modules))));
 }
