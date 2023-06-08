@@ -43,6 +43,7 @@
       nixModule = systemModules.nix inputs;
     in
     {
+      lib = lib;
       homeModules = homeModules;
       systemModules = systemModules;
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
@@ -96,7 +97,7 @@
               systemModules.network
               systemModules.openssh
               systemModules.openvpn
-              systemModules.sops
+              (systemModules.sops ./secrets/example.yaml)
               systemModules.sound
               systemModules.steam
               systemModules.tailscale
@@ -129,7 +130,7 @@
               nixModule
               systemModules.openssh
               systemModules.openvpn
-              systemModules.sops
+              (systemModules.sops ./secrets/example.yaml)
               systemModules.users
               systemModules.virtualization
             ];
