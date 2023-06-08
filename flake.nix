@@ -46,6 +46,7 @@
       lib = lib;
       homeModules = homeModules;
       systemModules = systemModules;
+      homeConfig = homeConfig;
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       homeManagerConfigurations = lib.createHomeManagerConfigs personalPackageSet {
         "jmoore@asmodeus" = {
