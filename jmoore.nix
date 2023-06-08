@@ -12,7 +12,7 @@
     ./home-modules/neovim
     ./home-modules/nix
     ./home-modules/nix-direnv
-    ((import ./home-modules/nushell) ./scripts)
+    ((import ./home-modules/nushell) "${builtins.toString ./.}/scripts")
     ./home-modules/rofi
     ./home-modules/starship
     ./home-modules/tmux
