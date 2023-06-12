@@ -157,7 +157,7 @@
             imports = [
               ./hardware-configs/spectre.nix
               nixModule
-              systemModules.sops
+              (systemModules.sops ./secrets/example.yaml)
               systemModules.sound
               systemModules.users
               systemModules.virtualization
