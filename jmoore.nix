@@ -19,7 +19,7 @@
     ./home-modules/zoxide
     ./home-modules/zsh
     # move background somewhere I can get it
-    {home.file.".background-image".source = ./wallpapers/nixos_dracula.png;}
+    { home.file.".background-image".source = ./wallpapers/nixos_dracula.png; }
 
   ] ++ additionalModules;
   home = {

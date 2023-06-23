@@ -11,8 +11,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-serve-ng.url = "github:aristanetworks/nix-serve-ng";
+    comma = {
+      url = "github:nix-community/comma";
+    };
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, home-manager, nur, sops-nix, nixos-generators, nix-serve-ng, ... }@inputs:
+  outputs =
+    { nixpkgs
+    , home-manager
+    , nur
+    , sops-nix
+    , nixos-generators
+    , nix-serve-ng
+    , comma
+    , nix-index-database
+    , ...
+    }@inputs:
     let
       system = "x86_64-linux";
       lib = import ./lib {
@@ -21,6 +36,7 @@
         nur = nur;
         sops-nix = sops-nix;
         nix-serve-ng = nix-serve-ng;
+        nix-index-database = nix-index-database;
       };
       personalPackageSet = lib.systemPkgs {
         system = system;
@@ -71,6 +87,7 @@
               ./hardware-configs/asmodeus.nix
               systemModules.lightdm
               nixModule
+              systemModules.nix-index
               systemModules.network
               systemModules.nix-serve-ng
               systemModules.nvidia
@@ -95,6 +112,7 @@
             imports = [
               ./hardware-configs/baphomet.nix
               nixModule
+              systemModules.nix-index
               systemModules.network
               systemModules.openssh
               systemModules.openvpn

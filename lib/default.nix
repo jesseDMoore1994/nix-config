@@ -1,4 +1,4 @@
-{ nixpkgs, home-manager, nur, sops-nix, nix-serve-ng, ... }:
+{ nixpkgs, home-manager, nur, sops-nix, nix-serve-ng, nix-index-database, ... }:
 
 rec {
   systemPkgs =
@@ -33,6 +33,7 @@ rec {
       system = system;
       pkgs = pkgs;
       modules = [
+        nix-index-database.nixosModules.nix-index
         nix-serve-ng.nixosModules.default
         sops-nix.nixosModules.sops
         hardwareConfig
@@ -45,5 +46,5 @@ rec {
 
   getModulePaths = pkgs: modules: pkgs.lib.attrsets.mapAttrs
     (name: value: import (builtins.head value))
-    (pkgs.lib.attrsets.zipAttrs (map (n: {"${n}"= "${modules}/${n}";}) (builtins.attrNames (builtins.readDir modules))));
+    (pkgs.lib.attrsets.zipAttrs (map (n: { "${n}" = "${modules}/${n}"; }) (builtins.attrNames (builtins.readDir modules))));
 }

@@ -18,7 +18,7 @@ script_dir: { pkgs, config, ... }:
       alias ncas = do {nc; ${script_dir}/apply_system.hs; cd -};
       alias ncau = do {nc; ${script_dir}/apply_user.hs; cd -};
       alias ncu = do {nc; ${script_dir}/update.hs; cd -};
-      alias work = ssh jmoore@jmoore-arch.adtran.com;
+      alias work = ssh jmoore@jmoore-nixos.adtran.com;
 
       let-env config = {
         show_banner: false
