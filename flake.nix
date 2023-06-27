@@ -71,6 +71,7 @@
         "jmoore@asmodeus" = {
           userConfig = homeConfig {
             pkgs = personalPackageSet;
+            doom = nix-doom-emacs;
             additionalModules = [ homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
@@ -78,6 +79,7 @@
         "jmoore@baphomet" = {
           userConfig = homeConfig {
             pkgs = personalPackageSet;
+            doom = nix-doom-emacs;
             additionalModules = [ homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
