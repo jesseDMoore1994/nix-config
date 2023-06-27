@@ -16,6 +16,7 @@
     };
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
   outputs =
     { nixpkgs
@@ -26,6 +27,7 @@
     , nix-serve-ng
     , comma
     , nix-index-database
+    , nix-doom-emacs
     , ...
     }@inputs:
     let
@@ -37,6 +39,7 @@
         sops-nix = sops-nix;
         nix-serve-ng = nix-serve-ng;
         nix-index-database = nix-index-database;
+        nix-doom-emacs = nix-doom-emacs;
       };
       personalPackageSet = lib.systemPkgs {
         system = system;
