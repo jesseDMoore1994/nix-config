@@ -135,59 +135,59 @@
           pkgs = personalPackageSet;
         };
       };
-      packages.x86_64-linux.golem = nixos-generators.nixosGenerate {
-        pkgs = personalPackageSet;
-        system = personalPackageSet.system;
-        modules = [
-          sops-nix.nixosModules.sops
-          nur.nixosModules.nur
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.jmoore = homeConfig {
-              pkgs = personalPackageSet;
-            };
-          }
-          {
-            imports = [
-              ./hardware-configs/golem.nix
-              nixModule
-              systemModules.openssh
-              systemModules.openvpn
-              (systemModules.sops ./secrets/example.yaml)
-              systemModules.users
-              systemModules.virtualization
-            ];
-          }
-        ];
-        format = "vm";
-      };
-      packages.x86_64-linux.spectre = nixos-generators.nixosGenerate {
-        pkgs = personalPackageSet;
-        system = personalPackageSet.system;
-        modules = [
-          sops-nix.nixosModules.sops
-          nur.nixosModules.nur
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.users.jmoore = homeConfig {
-              pkgs = personalPackageSet;
-              additionalModules = [ homeModules.xmonad ];
-            };
-          }
-          {
-            imports = [
-              ./hardware-configs/spectre.nix
-              nixModule
-              (systemModules.sops ./secrets/example.yaml)
-              systemModules.sound
-              systemModules.users
-              systemModules.virtualization
-            ];
-          }
-        ];
-        format = "iso";
-      };
+      #packages.x86_64-linux.golem = nixos-generators.nixosGenerate {
+      #  pkgs = personalPackageSet;
+      #  system = personalPackageSet.system;
+      #  modules = [
+      #    sops-nix.nixosModules.sops
+      #    nur.nixosModules.nur
+      #    home-manager.nixosModules.home-manager
+      #    {
+      #      home-manager.useGlobalPkgs = true;
+      #      home-manager.users.jmoore = homeConfig {
+      #        pkgs = personalPackageSet;
+      #      };
+      #    }
+      #    {
+      #      imports = [
+      #        ./hardware-configs/golem.nix
+      #        nixModule
+      #        systemModules.openssh
+      #        systemModules.openvpn
+      #        (systemModules.sops ./secrets/example.yaml)
+      #        systemModules.users
+      #        systemModules.virtualization
+      #      ];
+      #    }
+      #  ];
+      #  format = "vm";
+      #};
+      #packages.x86_64-linux.spectre = nixos-generators.nixosGenerate {
+      #  pkgs = personalPackageSet;
+      #  system = personalPackageSet.system;
+      #  modules = [
+      #    sops-nix.nixosModules.sops
+      #    nur.nixosModules.nur
+      #    home-manager.nixosModules.home-manager
+      #    {
+      #      home-manager.useGlobalPkgs = true;
+      #      home-manager.users.jmoore = homeConfig {
+      #        pkgs = personalPackageSet;
+      #        additionalModules = [ homeModules.xmonad ];
+      #      };
+      #    }
+      #    {
+      #      imports = [
+      #        ./hardware-configs/spectre.nix
+      #        nixModule
+      #        (systemModules.sops ./secrets/example.yaml)
+      #        systemModules.sound
+      #        systemModules.users
+      #        systemModules.virtualization
+      #      ];
+      #    }
+      #  ];
+      #  format = "iso";
+      #};
     };
 }
