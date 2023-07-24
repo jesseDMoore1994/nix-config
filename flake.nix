@@ -80,7 +80,7 @@
           userConfig = homeConfig {
             pkgs = personalPackageSet;
             doom = nix-doom-emacs;
-            additionalModules = [ homeModules.xmonad ];
+            additionalModules = [ homeModules.sway ];
           };
           pkgs = personalPackageSet;
         };
@@ -116,6 +116,7 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/baphomet.nix
+              systemModules.lightdm
               nixModule
               systemModules.nix-index
               systemModules.network
@@ -124,6 +125,7 @@
               (systemModules.sops ./secrets/example.yaml)
               systemModules.sound
               systemModules.steam
+              systemModules.sway
               systemModules.tailscale
               systemModules.users
               systemModules.virtualization
