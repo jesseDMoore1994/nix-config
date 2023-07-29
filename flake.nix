@@ -91,6 +91,7 @@
             imports = [
               ./hardware-configs/asmodeus.nix
               systemModules.lightdm
+              systemModules.man
               nixModule
               systemModules.nix-index
               systemModules.network
@@ -116,6 +117,7 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/baphomet.nix
+              systemModules.man
               nixModule
               systemModules.nix-index
               systemModules.network

@@ -8,17 +8,17 @@
 {
   # CHANGE: intel_iommu enables iommu for intel CPUs with VT-d
   # use amd_iommu if you have an AMD CPU with AMD-Vi
-  boot.kernelParams = [ "amd_iommu=on" ];
-  boot.blacklistedKernelModules = [ "amdgpu" ];
+   boot.kernelParams = [ "amd_iommu=on" ];
+   #boot.blacklistedKernelModules = [ "amdgpu" ];
 
   # These modules are required for PCI passthrough, and must come before early modesetting stuff
-  boot.kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ];
+   #boot.kernelModules = [ "vfio" "vfio_iommu_type1" "vfio_pci" "vfio_virqfd" ];
 
   # CHANGE: Don't forget to put your own PCI IDs here
-  boot.extraModprobeConfig = ''
-    options vfio-pci ids=1002:73df,1002:ab28
-    softdep amdgpu pre: vfio-pci
-  '';
+  #boot.extraModprobeConfig = ''
+  #  options vfio-pci ids=1002:73df,1002:ab28
+  #  softdep amdgpu pre: vfio-pci
+  ##'';
 
   environment.systemPackages = with pkgs; [
     virtmanager
