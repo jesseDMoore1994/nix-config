@@ -14,7 +14,7 @@ pkgs:
       neofetch --ascii_colors 5 6 8 --colors 5 4 5 5 5 6
     '';
     shellAliases = {
-      work = "ssh jmoore@jmoore-arch.adtran.com";
+      work = "ssh jmoore@jmoore-nixos.adtran.com";
       nc = "cd $HOME/projects/nix-config";
       ncga = "nc; ./scripts/apply_system.hs; cd -";
       ncas = "nc; ./scripts/apply_system.hs; cd -";
