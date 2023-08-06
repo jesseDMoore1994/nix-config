@@ -103,6 +103,7 @@
               systemModules.sound
               systemModules.steam
               systemModules.system-builder
+              systemModules.system-packages
               systemModules.tailscale
               systemModules.users
               systemModules.virtualization

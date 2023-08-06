@@ -4,7 +4,8 @@
     jmoore = {
       isNormalUser = true;
       extraGroups = [ "wheel" "docker" ];
-      shell = pkgs.nushell;
+      shell = pkgs.zsh;
     };
   };
+  programs.zsh.enable = true;
 }
