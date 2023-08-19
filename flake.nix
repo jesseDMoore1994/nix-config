@@ -125,6 +125,7 @@
               (systemModules.sops ./secrets/example.yaml)
               systemModules.sound
               systemModules.steam
+              systemModules.system-packages
               systemModules.tailscale
               systemModules.users
               systemModules.virtualization
