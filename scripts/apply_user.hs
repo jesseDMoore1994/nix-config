@@ -1,8 +1,8 @@
 #!/run/current-system/sw/bin/env nix-shell
 #!nix-shell -i runghc -p "haskellPackages.ghcWithPackages (pkgs: [ pkgs.turtle ])"
+{-# LANGUAGE OverloadedStrings #-}
 import Turtle
 import Data.Text as T
-{-# LANGUAGE OverloadedStrings #-}
 
 
 getUser :: [(T.Text, T.Text)] -> Maybe Text
