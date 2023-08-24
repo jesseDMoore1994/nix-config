@@ -41,21 +41,23 @@
   };
 
   systemd.services."user-updater" = {
-    path = [ pkgs.git pkgs.nix pkgs.nixos-rebuild pkgs.util-linux ];
-    script = ''
+    path = [ pkgs.bash pkgs.git pkgs.nettools pkgs.nix pkgs.nixos-rebuild pkgs.util-linux ];
+    script = with pkgs; ''
       #!/usr/bin/env nix-shell
       #!nix-shell -i bash
 
       set -eu
 
       rm -rf /tmp/nix-config-user
-      git clone https://github.com/jesseDMoore1994/nix-config.git /tmp/nix-config-user || true
+      ${util-linux}/bin/runuser jmoore "${bash}/bin/bash -c '${git}/bin/git clone https://github.com/jesseDMoore1994/nix-config.git /tmp/nix-config-user || true'"
 
       pushd /tmp/nix-config-user
 
+      host=$(${nettools}/bin/hostname)
+      echo $host
       date >> /var/log/update_user.hs 2>&1
-      ${pkgs.util-linux}/bin/runuser jmoore bash -c "${pkgs.nix}/bin/nix build .#homeManagerConfigurations.jmoore@$(hostname).activationPackage"  >> /var/log/update_user.hs 2>&1
-      ${pkgs.util-linux}/bin/runuser jmoore ./result/activate  >> /var/log/update_user.hs 2>&1
+      ${util-linux}/bin/runuser jmoore "${bash}/bin/bash -c '${nix}/bin/nix build .#homeManagerConfigurations.jmoore@$host.activationPackage'"  >> /var/log/update_user.hs 2>&1
+      ${util-linux}/bin/runuser jmoore "./result/activate"  >> /var/log/update_user.hs 2>&1
 
       popd
     '';
