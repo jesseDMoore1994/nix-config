@@ -126,6 +126,7 @@
               systemModules.sound
               systemModules.steam
               systemModules.system-packages
+              systemModules.system-updater
               systemModules.tailscale
               systemModules.users
               systemModules.virtualization
