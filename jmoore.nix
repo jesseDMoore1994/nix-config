@@ -18,6 +18,7 @@
     ./home-modules/rofi
     ./home-modules/starship
     ./home-modules/tmux
+    ./home-modules/user-updater
     ./home-modules/zoxide
     ./home-modules/zsh
     # move background somewhere I can get it
