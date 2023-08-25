@@ -21,8 +21,8 @@
 
       pushd /tmp/nix-config-system
 
-      date >> /var/log/update_system.log 2>&1
-      nohup ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .# >> /var/log/update_system.log 2>&1 &
+      date 
+      nohup ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .# 2>&1 &
 
       popd
     '';
