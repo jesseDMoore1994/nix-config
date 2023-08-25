@@ -23,9 +23,9 @@
 
          host=$(hostname)
          echo $host
-         date >> ~/update_user.log 2>&1
-         nix build .#homeManagerConfigurations.jmoore@$host.activationPackage  >> ~/update_user.log 2>&1
-         bash ./result/activate  >> ~/update_user.log 2>&1
+         date 2>&1
+         nix build .#homeManagerConfigurations.jmoore@$host.activationPackage 2>&1
+         bash ./result/activate 2>&1
 
          popd
       '';
