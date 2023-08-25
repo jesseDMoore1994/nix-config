@@ -22,7 +22,7 @@
       pushd /tmp/nix-config-system
 
       date 
-      nohup ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .# 2>&1 &
+      nohup ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake .# &
 
       popd
     '';
