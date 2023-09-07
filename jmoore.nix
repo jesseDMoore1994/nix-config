@@ -1,10 +1,16 @@
-{ pkgs, doom, additionalModules ? [ ], additionalPackages ? [ ], ... }:
+{
+  pkgs
+  #, doom
+  , additionalModules ? [ ]
+  , additionalPackages ? [ ]
+  , ... 
+}:
 
 {
   imports = [
     ./home-modules/bat
-    doom.hmModule
-    ./home-modules/doom
+    # doom.hmModule
+    # ./home-modules/doom
     ./home-modules/dunst
     ./home-modules/exa
     ./home-modules/fd
