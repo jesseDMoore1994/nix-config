@@ -17,6 +17,11 @@
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    zellij = {
+      url = "github:zellij-org/zellij";
+      flake = false;
+    };
+
   };
   outputs =
     { nixpkgs
@@ -28,6 +33,7 @@
     , comma
     , nix-index-database
     # , nix-doom-emacs
+    , zellij
     , ...
     }@inputs:
     let
@@ -72,6 +78,7 @@
           userConfig = homeConfig {
             pkgs = personalPackageSet;
             # doom = nix-doom-emacs;
+            zellij = zellij;
             additionalModules = [ homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
@@ -80,6 +87,7 @@
           userConfig = homeConfig {
             pkgs = personalPackageSet;
             # doom = nix-doom-emacs;
+            zellij = zellij;
             additionalModules = [ homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
