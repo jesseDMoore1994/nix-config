@@ -13,7 +13,7 @@
     # doom.hmModule
     # ./home-modules/doom
     ./home-modules/dunst
-    ./home-modules/exa
+    ./home-modules/eza
     ./home-modules/fd
     ./home-modules/firefox
     ./home-modules/fonts
