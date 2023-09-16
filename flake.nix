@@ -116,6 +116,7 @@
               systemModules.users
               systemModules.virtualization
               systemModules.xserver
+              {networking.firewall.allowedTCPPorts = [ 8080 ];}
             ];
           };
           system = personalPackageSet.system;
