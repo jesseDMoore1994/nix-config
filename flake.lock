@@ -222,11 +222,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1694422566,
-        "narHash": "sha256-lHJ+A9esOz9vln/3CJG23FV6Wd2OoOFbDeEs4cMGMqc=",
+        "lastModified": 1694767346,
+        "narHash": "sha256-5uH27SiVFUwsTsqC5rs3kS7pBoNhtoy9QfTP9BmknGk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3a2786eea085f040a66ecde1bc3ddc7099f6dbeb",
+        "rev": "ace5093e36ab1e95cb9463863491bee90d5a4183",
         "type": "github"
       },
       "original": {
@@ -254,11 +254,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1694728017,
-        "narHash": "sha256-l7fs1a83mi/V/rBDplIZuDsfyjaCc/abFVQQ5bqsXo4=",
+        "lastModified": 1694897105,
+        "narHash": "sha256-RWiCtAlGxtCb0+cDgYYvqUXZlh5g94yLtSnBJhxFe0Q=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5d53f64d56bfc25b51bde308f96aef3e17292717",
+        "rev": "d5857edb11f6fc78308c5702ee87e62cdf19f41e",
         "type": "github"
       },
       "original": {
@@ -368,11 +368,11 @@
     "zellij": {
       "flake": false,
       "locked": {
-        "lastModified": 1693475008,
-        "narHash": "sha256-WndiFhzXg+Y12i4HbFD8q1ekSNTPb8BFWw6RX/HTzA8=",
+        "lastModified": 1694844997,
+        "narHash": "sha256-au/KtwLt9VuakjjbvQinudJaSB7ta3fv1sbh5ypzLQA=",
         "owner": "zellij-org",
         "repo": "zellij",
-        "rev": "697723ddd30715e2997ad12352ea3c89ebdb7e17",
+        "rev": "74a3b6363594d53f78c16a05444814d68e3fd76f",
         "type": "github"
       },
       "original": {

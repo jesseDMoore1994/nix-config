@@ -98,6 +98,7 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/asmodeus.nix
+              #systemModules.amd
               systemModules.lightdm
               nixModule
               systemModules.nix-index
