@@ -39,6 +39,7 @@
       betterlockscreen
       btop
       discord
+      gcc
       git
       gnumake
       jq
