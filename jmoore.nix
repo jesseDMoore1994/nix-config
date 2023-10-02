@@ -51,7 +51,6 @@
       python3
       ranger
       scrot
-      teams
       vivid
       vlc
       wget

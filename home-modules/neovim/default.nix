@@ -8,6 +8,7 @@
   home.file."${config.xdg.configHome}/nvim/bootstrap.lua" = {
     text = with pkgs; ''
       local lua_language_server = "${lua-language-server}/bin/lua-language-server"
+      local pyright = "${nodePackages_latest.pyright}/bin/pyright-langserver"
       ${builtins.readFile ./_bootstrap.lua}
     '';
   };
@@ -27,6 +28,7 @@
     ];
 
     extraPackages = with pkgs; [
+      nodePackages_latest.pyright
       rnix-lsp
       haskell-language-server
       lua-language-server

@@ -79,6 +79,17 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  pyright = {
+    lsp_name = "pyright",
+    lspconfig_name = "pyright",
+    config = {
+      cmd = {
+        pyright,
+        "--stdio"
+      },
+      capabilities = capabilities,
+    },
+  },
 
   lua_language_server = {
     lsp_name = "lua-language-server",
