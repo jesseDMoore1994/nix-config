@@ -1,16 +1,33 @@
-{ pkgs, home, config, ... }:
+{ pkgs, config, ... }:
 
 {
   home.sessionVariables = {
     EDITOR = "nvim";
   };
 
-  home.file."${config.xdg.configHome}/nvim/bootstrap.lua" = {
+  home.file."${config.xdg.configHome}/nvim/storepaths.lua" = {
     text = with pkgs; ''
-      local lua_language_server = "${lua-language-server}/bin/lua-language-server"
-      local pyright = "${nodePackages_latest.pyright}/bin/pyright-langserver"
-      ${builtins.readFile ./_bootstrap.lua}
+      local storepaths = {}
+
+      function storepaths.lua_language_server()
+        return "${lua-language-server}/bin/lua-language-server"
+      end
+      function storepaths.pyright()
+        return "${nodePackages_latest.pyright}/bin/pyright-langserver"
+      end
+      function storepaths.nil_ls()
+        return "${nil}/bin/nil"
+      end
+      function storepaths.haskell_language_server()
+        return "${haskell-language-server}/bin/hls"
+      end
+
+      return storepaths
     '';
+  };
+
+  home.file."${config.xdg.configHome}/nvim/bootstrap.lua" = {
+    source =  ./bootstrap.lua;
   };
 
   programs.neovim = {
@@ -29,7 +46,7 @@
 
     extraPackages = with pkgs; [
       nodePackages_latest.pyright
-      rnix-lsp
+      nil
       haskell-language-server
       lua-language-server
     ];

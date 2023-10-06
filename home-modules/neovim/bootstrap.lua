@@ -44,6 +44,29 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+local function is_win()
+  return package.config:sub(1, 1) == '\\'
+end
+
+local function get_path_separator()
+  if is_win() then
+    return '\\'
+  end
+  return '/'
+end
+
+
+local function script_path()
+  local str = debug.getinfo(2, 'S').source:sub(2)
+  if is_win() then
+    str = str:gsub('/', '\\')
+  end
+  return str:match('(.*' .. get_path_separator() .. ')')
+end
+
+package.path = package.path .. ";/" .. script_path() .. "?.lua"
+local store_paths = require 'storepaths'
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -84,7 +107,7 @@ local servers = {
     lspconfig_name = "pyright",
     config = {
       cmd = {
-        pyright,
+        store_paths.pyright,
         "--stdio"
       },
       capabilities = capabilities,
@@ -96,7 +119,7 @@ local servers = {
     lspconfig_name = "lua_ls",
     config = {
       cmd = {
-        lua_language_server
+        store_paths.lua_language_server
       },
       capabilities = capabilities,
       settings = {
@@ -108,19 +131,39 @@ local servers = {
       },
     },
   },
+
+  nil_ls = {
+    lsp_name = "nil",
+    lspconfig_name = "nil_ls",
+    config = {
+      cmd = {
+        store_paths.nil_ls
+      },
+      capabilities = capabilities,
+      settings = {
+        ['nil'] = {
+          nix = {
+            flake = {
+              autoArchive = false
+            }
+          }
+        }
+      },
+    },
+  },
 }
 
 local get_server_names = function()
-  res = {}
-  for k, v in pairs(servers) do 
+  local res = {}
+  for _, v in pairs(servers) do
     table.insert(res, v.Name)
   end
   return res
 end
 
 local get_server_configs = function()
-  res = {}
-  for _, v in pairs(servers) do 
+  local res = {}
+  for _, v in pairs(servers) do
     res[v.lspconfig_name] = v.config
   end
   return res
