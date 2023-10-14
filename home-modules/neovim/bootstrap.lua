@@ -64,9 +64,6 @@ local function script_path()
   return str:match('(.*' .. get_path_separator() .. ')')
 end
 
-package.path = package.path .. ";/" .. script_path() .. "?.lua"
-local store_paths = require 'storepaths'
-
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -107,7 +104,7 @@ local servers = {
     lspconfig_name = "pyright",
     config = {
       cmd = {
-        store_paths.pyright,
+        storepaths.pyright(),
         "--stdio"
       },
       capabilities = capabilities,
@@ -119,7 +116,7 @@ local servers = {
     lspconfig_name = "lua_ls",
     config = {
       cmd = {
-        store_paths.lua_language_server
+        storepaths.lua_language_server()
       },
       capabilities = capabilities,
       settings = {
@@ -137,7 +134,7 @@ local servers = {
     lspconfig_name = "nil_ls",
     config = {
       cmd = {
-        store_paths.nil_ls
+        storepaths.nil_ls()
       },
       capabilities = capabilities,
       settings = {

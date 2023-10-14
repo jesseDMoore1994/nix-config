@@ -5,7 +5,7 @@
     EDITOR = "nvim";
   };
 
-  home.file."${config.xdg.configHome}/nvim/storepaths.lua" = {
+  home.file."${config.xdg.configHome}/nvim/bootstrap.lua" = {
     text = with pkgs; ''
       local storepaths = {}
 
@@ -22,12 +22,8 @@
         return "${haskell-language-server}/bin/hls"
       end
 
-      return storepaths
+      ${builtins.readFile ./bootstrap.lua}
     '';
-  };
-
-  home.file."${config.xdg.configHome}/nvim/bootstrap.lua" = {
-    source =  ./bootstrap.lua;
   };
 
   programs.neovim = {

@@ -1,5 +1,10 @@
-{ nixpkgs, home-manager, nur, sops-nix, nix-serve-ng, nix-index-database, ... }:
-
+{ nixpkgs
+, home-manager
+, nur
+, sops-nix
+# , nix-serve-ng
+, nix-index-database
+, ... }:
 rec {
   systemPkgs =
     { system
@@ -34,7 +39,7 @@ rec {
       pkgs = pkgs;
       modules = [
         nix-index-database.nixosModules.nix-index
-        nix-serve-ng.nixosModules.default
+        # nix-serve-ng.nixosModules.default
         sops-nix.nixosModules.sops
         hardwareConfig
       ];

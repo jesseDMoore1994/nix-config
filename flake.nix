@@ -10,7 +10,9 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-serve-ng.url = "github:aristanetworks/nix-serve-ng";
+    # nix-serve-ng = {
+    #   url = "github:aristanetworks/nix-serve-ng";
+    # };
     comma = {
       url = "github:nix-community/comma";
     };
@@ -29,7 +31,7 @@
     , nur
     , sops-nix
     , nixos-generators
-    , nix-serve-ng
+    # , nix-serve-ng
     , comma
     , nix-index-database
     # , nix-doom-emacs
@@ -43,7 +45,7 @@
         home-manager = home-manager;
         nur = nur;
         sops-nix = sops-nix;
-        nix-serve-ng = nix-serve-ng;
+        # nix-serve-ng = nix-serve-ng;
         nix-index-database = nix-index-database;
         # nix-doom-emacs = nix-doom-emacs;
       };
