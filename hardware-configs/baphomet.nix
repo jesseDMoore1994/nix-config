@@ -6,54 +6,79 @@
 
 {
   imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "vmd" "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/58f8a749-8df9-4cd4-9f71-8bde27460483";
-      fsType = "ext4";
-    };
-
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-uuid/ff681ba1-292a-40a0-bb83-6d71e5ee20dc";
+    { device = "/dev/disk/by-uuid/5141628a-c8c3-4eed-8fda-94421f9f6afd";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/B980-E7D4";
+    { device = "/dev/disk/by-uuid/091C-2946";
       fsType = "vfat";
     };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/462c2be2-b8b3-4703-8d52-899930bdc5bd"; }];
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/1966ce97-3e3e-46b3-ba9e-edeae652bcb4";
+      fsType = "ext4";
+    };
 
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/4e914672-9429-4cad-acc9-0ea1c424dfe6"; }
+    ];
+
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
   networking.hostName = "baphomet"; # Define your hostname.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
   time.timeZone = "America/Chicago";
+
+  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   users.users.jmoore = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user
   };
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-  ];
-  services.openssh.enable = true;
-  system.stateVersion = "22.11"; # Did you read the comment?
-}
 
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
+
+  # Configure keymap in X11
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
+
+  system.stateVersion = "23.05"; # Did you read the comment?
+
+}
