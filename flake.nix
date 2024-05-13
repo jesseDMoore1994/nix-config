@@ -90,7 +90,7 @@
             pkgs = personalPackageSet;
             # doom = nix-doom-emacs;
             zellij = zellij;
-            additionalModules = [ homeModules.xmonad ];
+            additionalModules = [ homeModules.xmonad homeModules.sway ];
           };
           pkgs = personalPackageSet;
         };
@@ -129,11 +129,13 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/baphomet.nix
+              systemModules.greetd
               nixModule
               systemModules.nix-index
               systemModules.network
               systemModules.openssh
               systemModules.openvpn
+              systemModules.security
               (systemModules.sops ./secrets/example.yaml)
               systemModules.sound
               systemModules.steam

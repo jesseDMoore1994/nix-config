@@ -48,6 +48,7 @@
       obs-studio
       openconnect
       pipes-rs
+      prismlauncher
       python3
       ranger
       scrot
