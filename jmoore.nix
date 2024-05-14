@@ -39,7 +39,6 @@
       betterlockscreen
       btop
       discord
-      gcc
       git
       gnumake
       jq
@@ -48,6 +47,7 @@
       obs-studio
       openconnect
       pipes-rs
+      prismlauncher
       python3
       ranger
       scrot
