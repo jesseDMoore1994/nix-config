@@ -13,7 +13,7 @@
         return "${lua-language-server}/bin/lua-language-server"
       end
       function storepaths.pyright()
-        return "${nodePackages_latest.pyright}/bin/pyright-langserver"
+        return "${pyright}/bin/pyright-langserver"
       end
       function storepaths.nil_ls()
         return "${nil}/bin/nil"
@@ -41,7 +41,7 @@
     ];
 
     extraPackages = with pkgs; [
-      nodePackages_latest.pyright
+      pyright
       nil
       haskell-language-server
       lua-language-server
