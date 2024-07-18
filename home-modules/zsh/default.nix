@@ -21,6 +21,8 @@ pkgs:
       ncau = "nc; ./scripts/apply_user.hs; cd -";
       ncu = "nc; ./scripts/update.hs; cd -";
       icat = "kitty +kitten icat";
+      ":q" = "exit";
+      doom = "~/.config/emacs/bin/doom";
     };
   };
 }

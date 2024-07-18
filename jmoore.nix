@@ -13,6 +13,7 @@
     # doom.hmModule
     # ./home-modules/doom
     ./home-modules/dunst
+    ./home-modules/emacs
     ./home-modules/eza
     ./home-modules/fd
     ./home-modules/firefox
@@ -54,6 +55,9 @@
       vivid
       vlc
       wget
+      # emacs reqs doom is adamant to manage itself
+      ripgrep
+      clang
     ] ++ additionalPackages;
     stateVersion = "21.11";
   };

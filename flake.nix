@@ -134,6 +134,7 @@
               systemModules.network
               systemModules.openssh
               systemModules.openvpn
+              systemModules.qemu
               (systemModules.sops ./secrets/example.yaml)
               systemModules.sound
               systemModules.steam
