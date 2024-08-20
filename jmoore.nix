@@ -19,7 +19,6 @@
     ./home-modules/firefox
     ./home-modules/fonts
     ./home-modules/kitty
-    ./home-modules/neovim
     ./home-modules/nix
     ./home-modules/nix-direnv
     ((import ./home-modules/nushell) "${builtins.toString ./scripts}")
