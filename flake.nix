@@ -81,7 +81,7 @@
             pkgs = personalPackageSet;
             # doom = nix-doom-emacs;
             zellij = zellij;
-            additionalModules = [ homeModules.xmonad ];
+            additionalModules = [ homeModules.neovim homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
         };
@@ -90,7 +90,7 @@
             pkgs = personalPackageSet;
             # doom = nix-doom-emacs;
             zellij = zellij;
-            additionalModules = [ homeModules.xmonad ];
+            additionalModules = [ homeModules.neovim homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
         };
