@@ -42,6 +42,8 @@
   hardware.opengl.enable = true;
   networking.hostName = "asmodeus"; # Define your hostname.
   networking.networkmanager.enable = true;
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.utf8";
   services.xserver.displayManager.setupCommands = ''
