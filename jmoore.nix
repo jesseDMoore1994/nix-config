@@ -58,6 +58,7 @@
       # emacs reqs doom is adamant to manage itself
       ripgrep
       clang
+      unzip
     ] ++ additionalPackages;
     stateVersion = "21.11";
   };

@@ -61,6 +61,7 @@
           "steam-original"
           "steam-run"
           "steam-runtime"
+          "steam-unwrapped"
         ];
         overlays = [ nur.overlay ];
       };
@@ -145,6 +146,7 @@
               systemModules.virtualization
               systemModules.xfce
               systemModules.xserver
+              {networking.firewall.allowedTCPPorts = [ 8000 ];}
             ];
           };
           system = personalPackageSet.system;

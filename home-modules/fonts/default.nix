@@ -2,6 +2,7 @@
 {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hasklig" "Monoid" ]; })
+    nerd-fonts.hasklug
+    nerd-fonts.monoid
   ];
 }

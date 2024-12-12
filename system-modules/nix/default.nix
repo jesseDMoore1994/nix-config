@@ -21,5 +21,5 @@ inputs: { config, pkgs, ... }:
     options = "--delete-older-than 7d";
   };
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
-  nix.package = pkgs.nixFlakes;
+  nix.package = pkgs.nixVersions.stable;
 }
