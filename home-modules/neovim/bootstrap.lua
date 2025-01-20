@@ -129,25 +129,25 @@ local servers = {
     },
   },
 
-  nil_ls = {
-    lsp_name = "nil",
-    lspconfig_name = "nil_ls",
-    config = {
-      cmd = {
-        storepaths.nil_ls()
-      },
-      capabilities = capabilities,
-      settings = {
-        ['nil'] = {
-          nix = {
-            flake = {
-              autoArchive = false
-            }
-          }
-        }
-      },
-    },
-  },
+  --nil_ls = {
+  --  lsp_name = "nil",
+  --  lspconfig_name = "nil_ls",
+  --  config = {
+  --    cmd = {
+  --      storepaths.nil_ls()
+  --    },
+  --    capabilities = capabilities,
+  --    settings = {
+  --      ['nil'] = {
+  --        nix = {
+  --          flake = {
+  --            autoArchive = false
+  --          }
+  --        }
+  --      }
+  --    },
+  --  },
+  --},
 }
 
 local get_server_names = function()

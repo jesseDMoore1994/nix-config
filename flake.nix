@@ -146,7 +146,7 @@
               systemModules.virtualization
               systemModules.xfce
               systemModules.xserver
-              {networking.firewall.allowedTCPPorts = [ 8000 ];}
+              {networking.firewall.allowedTCPPorts = [ 8000 9339 ];}
             ];
           };
           system = personalPackageSet.system;

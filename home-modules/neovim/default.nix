@@ -15,9 +15,11 @@
       function storepaths.pyright()
         return "${pyright}/bin/pyright-langserver"
       end
+      --[[
       function storepaths.nil_ls()
         return "${nil}/bin/nil"
       end
+      --]]
       function storepaths.haskell_language_server()
         return "${haskell-language-server}/bin/hls"
       end
@@ -42,7 +44,7 @@
 
     extraPackages = with pkgs; [
       pyright
-      nil
+      # nil
       haskell-language-server
       lua-language-server
     ];
