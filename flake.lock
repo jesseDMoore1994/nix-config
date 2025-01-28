@@ -228,11 +228,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1738009963,
-        "narHash": "sha256-Lbr95IRCoSqlBaN8zeKWQPJWe1KFr/eyv8FGFEIz6+Q=",
+        "lastModified": 1738100805,
+        "narHash": "sha256-fiVg7SRQD3Yaa6m+mAsXAd9ZGE/S11nc3CrwGNoIb5E=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "949fdd329067106a84cc3739474a37257a500f4a",
+        "rev": "3fdbb477c3a1325862cb8238dbbba7e05d33554b",
         "type": "github"
       },
       "original": {
@@ -328,11 +328,11 @@
     "zellij": {
       "flake": false,
       "locked": {
-        "lastModified": 1737827029,
-        "narHash": "sha256-0WtWmK+x1Q2qOaRN2AsBYZ+6QzJP+sT4N8LWt0OM3UM=",
+        "lastModified": 1738095911,
+        "narHash": "sha256-0+L5K/iN+A8WhM43hqU/zivb1krvz5XsD2/zhaljP4U=",
         "owner": "zellij-org",
         "repo": "zellij",
-        "rev": "10df29ed113c5b5cf3887eaefc0fae9351080a75",
+        "rev": "382a0757e2c478523463a3c1e1be51ca16829258",
         "type": "github"
       },
       "original": {
