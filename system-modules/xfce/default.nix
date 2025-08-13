@@ -4,8 +4,8 @@
     xterm.enable = false;
     xfce = {
       enable = true;
-      noDesktop = true;
-      enableXfwm = false;
+      #noDesktop = true;
+      #enableXfwm = false;
     };
   };
 }
