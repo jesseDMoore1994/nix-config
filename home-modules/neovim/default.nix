@@ -34,15 +34,26 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
+      CopilotChat-nvim
+      copilot-lua
       cmp-nvim-lsp
       nvim-cmp
       dracula-vim
       vim-nix
     ];
 
+    extraPython3Packages = p: [
+      p.python-dotenv
+      p.requests
+      p.prompt-toolkit
+      p.tiktoken
+    ];
+
     extraPackages = with pkgs; [
+      curl
       pyright
       nil
+      nodejs
       haskell-language-server
       lua-language-server
     ];

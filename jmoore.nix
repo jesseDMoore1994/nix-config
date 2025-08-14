@@ -26,7 +26,7 @@
     ./home-modules/rofi
     ./home-modules/starship
     ./home-modules/tmux
-    ./home-modules/user-updater
+    # ./home-modules/user-updater
     (import ./home-modules/zellij pkgs { zellij = zellij; })
     ./home-modules/zoxide
     ./home-modules/zsh

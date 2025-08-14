@@ -45,9 +45,7 @@
         home-manager = home-manager;
         nur = nur;
         sops-nix = sops-nix;
-        # nix-serve-ng = nix-serve-ng;
         nix-index-database = nix-index-database;
-        # nix-doom-emacs = nix-doom-emacs;
       };
       personalPackageSet = lib.systemPkgs {
         system = system;
@@ -80,7 +78,6 @@
         "jmoore@asmodeus" = {
           userConfig = homeConfig {
             pkgs = personalPackageSet;
-            # doom = nix-doom-emacs;
             zellij = zellij;
             additionalModules = [ homeModules.xmonad ];
           };
@@ -89,9 +86,7 @@
         "jmoore@baphomet" = {
           userConfig = homeConfig {
             pkgs = personalPackageSet;
-            # doom = nix-doom-emacs;
             zellij = zellij;
-            additionalModules = [ homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
         };
@@ -130,6 +125,7 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/baphomet.nix
+              systemModules.cosmic
               nixModule
               systemModules.nix-index
               systemModules.network
