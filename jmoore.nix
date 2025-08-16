@@ -43,6 +43,7 @@
       git
       gnumake
       jq
+      input-leap
       neofetch
       niv
       obs-studio

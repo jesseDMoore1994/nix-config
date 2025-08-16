@@ -125,7 +125,8 @@
           hardwareConfig = {
             imports = [
               ./hardware-configs/baphomet.nix
-              systemModules.cosmic
+              # systemModules.cosmic
+              systemModules.gnome
               nixModule
               systemModules.nix-index
               systemModules.network
@@ -142,7 +143,7 @@
               systemModules.virtualization
               systemModules.xfce
               systemModules.xserver
-              {networking.firewall.allowedTCPPorts = [ 8000 ];}
+              {networking.firewall.allowedTCPPorts = [ 8000 24800 ];}
             ];
           };
           system = personalPackageSet.system;
