@@ -75,8 +75,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   system.stateVersion = "23.05"; # Did you read the comment?

@@ -61,7 +61,7 @@
           "steam-runtime"
           "steam-unwrapped"
         ];
-        overlays = [ nur.overlay ];
+        overlays = [ nur.overlays.default ];
       };
       homeModules = lib.getModulePaths personalPackageSet ./home-modules;
       systemModules = lib.getModulePaths personalPackageSet ./system-modules;

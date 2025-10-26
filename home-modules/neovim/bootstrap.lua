@@ -561,15 +561,16 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 
 -- document existing key chains
-require('which-key').register({
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-})
+--require('which-key').register({
+--    { "", group = "[C]ode" },
+--    { "", group = "[D]ocument" },
+--    { "", group = "[S]earch" },
+--    { "", group = "More git" },
+--    { "", group = "[G]it" },
+--    { "", group = "[R]ename" },
+--    { "", group = "[W]orkspace" },
+--    { "", desc = "", hidden = true, mode = { "n", "n", "n", "n", "n", "n", "n" } },
+--  })
 
 
 -- Setup neovim lua configuration
@@ -625,7 +626,7 @@ cmp.setup {
 }
 
 for k, v in pairs(get_server_configs()) do
-  require('lspconfig')[k].setup(v)
+  vim.lsp.config(k, v)
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
