@@ -44,7 +44,7 @@
       gnumake
       jq
       input-leap
-      neofetch
+      fastfetch
       niv
       obs-studio
       openconnect
