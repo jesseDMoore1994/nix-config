@@ -45,9 +45,20 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   time.timeZone = "America/Chicago";
-  i18n.defaultLocale = "en_US.utf8";
-  services.xserver.displayManager.setupCommands = ''
-    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1360x768 --dpi 40 --output HDMI-0 --mode 1920x1080 --dpi 96 --right-of DP-1
-  '';
+  i18n.defaultLocale = "en_US.UTF-8";
+   i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
+  #services.xserver.displayManager.setupCommands = ''
+  #  ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode 1360x768 --dpi 40 --output HDMI-0 --mode 1920x1080 --dpi 96 --right-of DP-1
+  #'';
   system.stateVersion = "22.05";
 }

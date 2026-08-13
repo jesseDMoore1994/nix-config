@@ -1,7 +1,7 @@
 {
   description = "jesse@jessemoore.dev NixOS configuration flake";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:JesseDMoore1994/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
@@ -61,7 +61,7 @@
           "steam-runtime"
           "steam-unwrapped"
         ];
-        overlays = [ nur.overlay ];
+        overlays = [ nur.overlays ];
       };
       homeModules = lib.getModulePaths personalPackageSet ./home-modules;
       systemModules = lib.getModulePaths personalPackageSet ./system-modules;
@@ -79,7 +79,6 @@
           userConfig = homeConfig {
             pkgs = personalPackageSet;
             zellij = zellij;
-            additionalModules = [ homeModules.xmonad ];
           };
           pkgs = personalPackageSet;
         };
@@ -97,7 +96,9 @@
             imports = [
               ./hardware-configs/asmodeus.nix
               #systemModules.amd
-              systemModules.lightdm
+              #systemModules.cosmic
+              systemModules.gnome
+              #systemModules.lightdm
               nixModule
               systemModules.nix-index
               systemModules.network
@@ -115,7 +116,8 @@
               systemModules.users
               systemModules.virtualization
               systemModules.xserver
-              {networking.firewall.allowedTCPPorts = [ 8080 ];}
+              {networking.firewall.allowedTCPPorts = [ 8080 24800 ];}
+              {environment.systemPackages = [ personalPackageSet.protonup-rs personalPackageSet.lutris personalPackageSet.onboard ];}
             ];
           };
           system = personalPackageSet.system;
