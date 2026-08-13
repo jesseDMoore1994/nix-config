@@ -15,5 +15,6 @@
         vimium
       ];
     };
+    configPath = ".mozilla/firefox";
   };
 }

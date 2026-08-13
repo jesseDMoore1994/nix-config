@@ -1,8 +1,8 @@
 {
   description = "jesse@jessemoore.dev NixOS configuration flake";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -10,6 +10,7 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    reticulum-flake.url = "git+https://codeberg.org/adingbatponder/reticulum_nixos_flake.git";
     # nix-serve-ng = {
     #   url = "github:aristanetworks/nix-serve-ng";
     # };
@@ -31,6 +32,7 @@
     , nur
     , sops-nix
     , nixos-generators
+    , reticulum-flake
     # , nix-serve-ng
     , comma
     , nix-index-database
@@ -51,6 +53,7 @@
         system = system;
         unfree = [
           "discord"
+          "github-copilot-cli"
           "nvidia"
           "nvidia-x11"
           "nvidia-settings"
@@ -144,6 +147,31 @@
               systemModules.xfce
               systemModules.xserver
               {networking.firewall.allowedTCPPorts = [ 8000 24800 ];}
+              {environment.systemPackages = [ 
+                personalPackageSet.protonup-rs 
+                personalPackageSet.lutris 
+                personalPackageSet.onboard 
+                personalPackageSet.gp-saml-gui 
+                personalPackageSet.github-copilot-cli
+              ];}
+                            # {# add overlay for openldap issue
+              #   nixpkgs.overlays = [
+              #     (final: prev: {
+              #       final.openldap = prev.openldap.overrideAttrs (oldAttrs: {
+              #         doCheck = false;
+              #       });
+              #     })
+              # ];}
+              reticulum-flake.nixosModules.sine-qua-non-packages
+              # reticulum-flake.nixosModules.reticulum-integration
+              # reticulum-flake.nixosModules.meshchat-launchers
+              { 
+                nixpkgs.overlays = [ reticulum-flake.overlays.default ];
+                environment.systemPackages = with reticulum-flake.packages.${personalPackageSet.system}; [
+                  rns
+                  nomadnet
+                ];
+              }
             ];
           };
           system = personalPackageSet.system;

@@ -3,7 +3,7 @@
   users.users = {
     jmoore = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "docker" ];
+      extraGroups = [ "wheel" "docker" "dialout" ];
       shell = pkgs.zsh;
     };
   };

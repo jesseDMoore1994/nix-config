@@ -58,7 +58,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
   users.users.jmoore = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user
+    extraGroups = [ "wheel" "dialout" ]; # Enable ‘sudo’ for the user
   };
 
   i18n.extraLocaleSettings = {

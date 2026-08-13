@@ -57,5 +57,7 @@
       haskell-language-server
       lua-language-server
     ];
+    withRuby = false;
+    withPython3 = false;
   };
 }
