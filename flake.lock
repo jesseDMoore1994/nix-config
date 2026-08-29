@@ -531,11 +531,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1787753485,
-        "narHash": "sha256-BZWCi9ZRJiARTuKTbbtvFTj7t1TK4G3UEckT3HyNfRg=",
+        "lastModified": 1787848966,
+        "narHash": "sha256-7gDpu5hpq0rOYnYMcOWqSzquK4HA/xU8Xf3CjUBOOJA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "062346a6d85bc4b49dfaa61c986e9c5be21217d1",
+        "rev": "d57af924f160a5084293c71c2043f058bd1cdb60",
         "type": "github"
       },
       "original": {
@@ -615,11 +615,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1787894714,
-        "narHash": "sha256-rUheQ6TZ4+u7n8MSosn7vp1gAl/s9r/SQBn19+LzEGs=",
+        "lastModified": 1787973602,
+        "narHash": "sha256-lLOtbyUNjf/+K+3LknqDsSHpYTY0F7TTAUHeZC5xHKA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6186f5c893283b588510f690eef33266fcc1f557",
+        "rev": "af81814fd8fe9a9273963a834653e5d7c436a787",
         "type": "github"
       },
       "original": {
@@ -646,11 +646,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1787726036,
-        "narHash": "sha256-SX3Y2qvJJ8tkdWLjIdpAZzYn8JymnPJKvq96saWlclY=",
+        "lastModified": 1787838244,
+        "narHash": "sha256-diCyzZSXiES51eV5pVVs3SAz0LRzaC28Re4P0OMjj/o=",
         "ref": "refs/heads/main",
-        "rev": "20436b7134958794c45ed3b5b8e5cf42b2ac2fca",
-        "revCount": 2482,
+        "rev": "517992b3eac3335b1e7174a2acfc5e4320e182d5",
+        "revCount": 2486,
         "type": "git",
         "url": "https://codeberg.org/adingbatponder/reticulum_nixos_flake.git"
       },
@@ -817,11 +817,11 @@
     "zellij": {
       "flake": false,
       "locked": {
-        "lastModified": 1787749952,
-        "narHash": "sha256-vP5qdbE3diVG4s3ODdyeizLKb+lOhQZuPeiGLx4reI0=",
+        "lastModified": 1787909058,
+        "narHash": "sha256-RqqBlvlBrQr6VcJRGa0ngz9fHfHaFmd0qt7ptiWj0zs=",
         "owner": "zellij-org",
         "repo": "zellij",
-        "rev": "035876d7af8dc20465190b4923a3282690ddb2ab",
+        "rev": "e839bfffa586992364309a685b2c71f3b23c247e",
         "type": "github"
       },
       "original": {
