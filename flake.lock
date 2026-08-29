@@ -529,6 +529,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-tailscale": {
+      "locked": {
+        "lastModified": 1787736819,
+        "narHash": "sha256-cV5xEJJK3BvhU8rEd4mC9UsmDi5qscv/kzGPhBRC5WA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9fbb54b33e91ee4ca368e35a78e0613c720600b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1787848966,
@@ -615,11 +631,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1787973602,
-        "narHash": "sha256-lLOtbyUNjf/+K+3LknqDsSHpYTY0F7TTAUHeZC5xHKA=",
+        "lastModified": 1788047772,
+        "narHash": "sha256-U50U4+SmjpxHcje8Jd2ywqnEiguaEGqr81dqIuUD8F8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "af81814fd8fe9a9273963a834653e5d7c436a787",
+        "rev": "953201c2e3ecdd1ab9b983e3cb4ff2013307dbcb",
         "type": "github"
       },
       "original": {
@@ -642,15 +658,16 @@
         "nixpkgs-radicle": "nixpkgs-radicle",
         "nixpkgs-shira": "nixpkgs-shira",
         "nixpkgs-signal": "nixpkgs-signal",
+        "nixpkgs-tailscale": "nixpkgs-tailscale",
         "rust-overlay": "rust-overlay",
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1787838244,
-        "narHash": "sha256-diCyzZSXiES51eV5pVVs3SAz0LRzaC28Re4P0OMjj/o=",
+        "lastModified": 1788038216,
+        "narHash": "sha256-OPXBGFKPDZ7sNfbZssu/ZR08XDiUjsLjzXDgq91ZXHA=",
         "ref": "refs/heads/main",
-        "rev": "517992b3eac3335b1e7174a2acfc5e4320e182d5",
-        "revCount": 2486,
+        "rev": "d25e081a68ba3a88461ff2c882587cc0a0049c66",
+        "revCount": 2496,
         "type": "git",
         "url": "https://codeberg.org/adingbatponder/reticulum_nixos_flake.git"
       },
