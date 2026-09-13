@@ -226,11 +226,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789182507,
-        "narHash": "sha256-9nt4W0HNNP84B+b37yRs9Zxat1ZR5guJxEZDEjAgex4=",
+        "lastModified": 1789267039,
+        "narHash": "sha256-LWiBv9yAYFi2LPbUhDGHPGKYskJQjj2fw12OlyO1uQo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b1d1b60084970f9d1e2b72662639dab6d039be71",
+        "rev": "ec172013fa62135f58fb58dd17ae9651e8f39727",
         "type": "github"
       },
       "original": {
@@ -332,11 +332,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788680125,
-        "narHash": "sha256-amGSoDobwmp4CFvCn841ws2iuitus+HUJdD/gKgsrJA=",
+        "lastModified": 1789286446,
+        "narHash": "sha256-xVstyCdg0DpzjyrEacm72VJAIP9DMhfWJdPDzhWxHuo=",
         "owner": "Mic92",
         "repo": "nix-index-database",
-        "rev": "116ad1c2adb642405ef8916f6a94c8626f971344",
+        "rev": "a74e173407559083a412ea89a1cc58ea389c3b65",
         "type": "github"
       },
       "original": {
@@ -646,11 +646,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1789254699,
-        "narHash": "sha256-o+Ug8F3eTFX+ucdljXsfsGWe9lKi85llzroryf/FEn4=",
+        "lastModified": 1789343719,
+        "narHash": "sha256-W6HmmbkwQU5Vphl4INe54maNsmYYIP/f5uda5gmg+OE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6c703d49d0434e75825fd9eb123b2201d661ff2f",
+        "rev": "0ff4f8d45ecb3453b470ba68281fb262d2049561",
         "type": "github"
       },
       "original": {
@@ -678,11 +678,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1789250545,
-        "narHash": "sha256-PGUubER02REiUVchYL8O9aPzDDgM3F6XNWfdEeOasQk=",
+        "lastModified": 1789336980,
+        "narHash": "sha256-HEU5rtOs6mMFNLEXAgp9cCd4b5vXJqgVcTa9s5ZZPv8=",
         "ref": "refs/heads/main",
-        "rev": "59ace097591565fe0de2df8663355c7d115afbe7",
-        "revCount": 2591,
+        "rev": "479ceb4c09ec61380e2f2369fdc032fe5a2fd160",
+        "revCount": 2609,
         "type": "git",
         "url": "https://codeberg.org/adingbatponder/reticulum_nixos_flake.git"
       },
