@@ -646,11 +646,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1792714601,
-        "narHash": "sha256-qEpuPmqDimVUteoCADJN2kMzdOfcIVWKcs5Snmw4mY0=",
+        "lastModified": 1792800613,
+        "narHash": "sha256-7jcH19cIxtNj3J6F3q0IVVYSOsqWfe4Q+b/iV9nSAp4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "a84e05e1d6938ac2b1bf0407f046ff75c9f9ce76",
+        "rev": "cd8ea7b2b18631c687cebd7718647f998a93589b",
         "type": "github"
       },
       "original": {
@@ -678,11 +678,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1792649400,
-        "narHash": "sha256-MsxsBpybo2vhgT/zisF1QA4vHFg0Mba9zblnpTBh46g=",
+        "lastModified": 1792788882,
+        "narHash": "sha256-U5XvEkY6tscorC8HN6t963EjJyfrrZM2LnFM3DvwxLo=",
         "ref": "refs/heads/main",
-        "rev": "5667c1c604c029c68cb6e426769b63e964e486b3",
-        "revCount": 2979,
+        "rev": "ddd6996b6134e30ce2857d211bdebbefc89835c4",
+        "revCount": 2983,
         "type": "git",
         "url": "https://codeberg.org/adingbatponder/reticulum_nixos_flake.git"
       },
@@ -785,11 +785,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1792308394,
-        "narHash": "sha256-r4G33ygU307QCwyngAS6E9BMhnCRPyZrL7UxRCMrqo0=",
+        "lastModified": 1792655475,
+        "narHash": "sha256-4ChDjNgJM5uKwTuecLHxGlafAtoyKo5a7ip23J5IG3M=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "a1438ca361b05d1e70854d5495abcb34fdf6ff47",
+        "rev": "e80b8b733d8452a751a25d0063abc9683b6c8185",
         "type": "github"
       },
       "original": {
@@ -834,11 +834,11 @@
     "zellij": {
       "flake": false,
       "locked": {
-        "lastModified": 1792685486,
-        "narHash": "sha256-EA+XeD+n7U2Ql9wIi+u41jk7m1TnhIdZhkx3AkPy+30=",
+        "lastModified": 1792770150,
+        "narHash": "sha256-RCxqaODsjASXOSZ3cqZuc94xz3mG5rep5r4yPtfOiTc=",
         "owner": "zellij-org",
         "repo": "zellij",
-        "rev": "c7c4ce42b8663dad464c03b92a7949ad58c68c55",
+        "rev": "ffb334a949fd388a7d844f9089a0b9af9ecf8d41",
         "type": "github"
       },
       "original": {
