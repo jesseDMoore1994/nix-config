@@ -646,11 +646,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1793237590,
-        "narHash": "sha256-LEJZdh9/WQyTIvLb1Cv49GUgmeDpEMowoUyVLcljOnU=",
+        "lastModified": 1793323244,
+        "narHash": "sha256-LWhM1B0NwTDDQmbhaKhk6Y7zI03ZR0PsuxrclQ0f+DE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "2649bf9170377d59250c4880d644d1f2629886b5",
+        "rev": "a65954507ba83118702662921a48141fd3663a79",
         "type": "github"
       },
       "original": {
@@ -678,11 +678,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1793182597,
-        "narHash": "sha256-JasdBfnEmVyl/KMCEt+QcPJ0QkI7gi+xZ+zjN/5L//o=",
+        "lastModified": 1793264768,
+        "narHash": "sha256-bXsK/CtelRojJqsAPscpXzr3sXGQJIILUUSIw5Hth+o=",
         "ref": "refs/heads/main",
-        "rev": "d4e319412cc5fcce552b0cc7bf9edc3f67bfdf09",
-        "revCount": 3054,
+        "rev": "7e4deaace6eb647d044492e67f6b876e40e2ed23",
+        "revCount": 3057,
         "type": "git",
         "url": "https://codeberg.org/adingbatponder/reticulum_nixos_flake.git"
       },
@@ -834,11 +834,11 @@
     "zellij": {
       "flake": false,
       "locked": {
-        "lastModified": 1793117989,
-        "narHash": "sha256-qySHPTxmAB6IC25FM7aZJw1B6XIUCAwE+42sQNZeHaE=",
+        "lastModified": 1793297301,
+        "narHash": "sha256-P/jYNN3PhTVASlR69BzwbZnGqWlewQONAwEbnooAhyk=",
         "owner": "zellij-org",
         "repo": "zellij",
-        "rev": "1f3df933978e00c246553070310175c392fcfe4f",
+        "rev": "ca787b58774657bb0f2038e68766910af369d41f",
         "type": "github"
       },
       "original": {
