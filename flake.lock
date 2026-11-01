@@ -562,11 +562,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1793294725,
-        "narHash": "sha256-loLMnbbS4KhmG2ln9EY6f0YMNCA273Yx02oWYQ9IMeE=",
+        "lastModified": 1793410479,
+        "narHash": "sha256-HzgjxrLY4AEc0044ZuM5CHbLSWLZgDlay1idmzvvpJs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "6f06d204d8f2d8761d9da78778745974a3216381",
+        "rev": "fa1373130d5a21c040a47c5dbe1913d59ed91808",
         "type": "github"
       },
       "original": {
@@ -646,11 +646,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1793409457,
-        "narHash": "sha256-ZhfpPB+6LRYsrorMPvCNSCEzAULuIsfYyOd9SxjOtrY=",
+        "lastModified": 1793492601,
+        "narHash": "sha256-kaWX1KjcRt2oLm0bybP+jlu+rP1chVAno5gKF08sOBs=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "09ec2487513fa43929fd0880a352eed2c6e1621b",
+        "rev": "d9dadd7e2770eac0a0679df79a562fd9c9fa9d6c",
         "type": "github"
       },
       "original": {
@@ -678,11 +678,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1793264768,
-        "narHash": "sha256-bXsK/CtelRojJqsAPscpXzr3sXGQJIILUUSIw5Hth+o=",
+        "lastModified": 1793442501,
+        "narHash": "sha256-YUv9ZnWq0tryD+eEJxW2ZvzLIF20jPfkI21EARcXH3c=",
         "ref": "refs/heads/main",
-        "rev": "7e4deaace6eb647d044492e67f6b876e40e2ed23",
-        "revCount": 3057,
+        "rev": "b3cc7078ff650beab65419ad23818492404d36c7",
+        "revCount": 3058,
         "type": "git",
         "url": "https://codeberg.org/adingbatponder/reticulum_nixos_flake.git"
       },
