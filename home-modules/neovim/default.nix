@@ -34,8 +34,8 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
-      CopilotChat-nvim
-      copilot-lua
+      # CopilotChat-nvim
+      # copilot-lua
       cmp-nvim-lsp
       nvim-cmp
       dracula-vim

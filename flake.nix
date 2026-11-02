@@ -53,7 +53,7 @@
         system = system;
         unfree = [
           "discord"
-          "github-copilot-cli"
+          #"github-copilot-cli"
           "nvidia"
           "nvidia-x11"
           "nvidia-settings"
