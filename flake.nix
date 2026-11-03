@@ -152,7 +152,7 @@
                 personalPackageSet.lutris 
                 personalPackageSet.onboard 
                 personalPackageSet.gp-saml-gui 
-                personalPackageSet.github-copilot-cli
+                # personalPackageSet.github-copilot-cli
               ];}
                             # {# add overlay for openldap issue
               #   nixpkgs.overlays = [
