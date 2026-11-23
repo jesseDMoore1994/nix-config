@@ -226,11 +226,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795308715,
-        "narHash": "sha256-ZPdlKvauJbpbYWTwLOJ4caIP+FOIWyhuLcX0iXEyXYU=",
+        "lastModified": 1795325060,
+        "narHash": "sha256-XYoMPsqRFZ6jOaYI1KAAu8fzqif4tkCX8mhEKrViDXQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8e2c5229332bf2b431da62f26d20e7cda711c07d",
+        "rev": "6480d7d8533b88c78cc6dcda395ab89cd546e450",
         "type": "github"
       },
       "original": {
@@ -332,11 +332,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794739050,
-        "narHash": "sha256-PCGNIyAydZcdUXCxEXTjrS1+wWS+k9E+ENqBkUK2Mpg=",
+        "lastModified": 1795345257,
+        "narHash": "sha256-p1dA8lUFQTLJfDI2gaTZQ+CcMKw3nxvyHNbwpVMy2rY=",
         "owner": "Mic92",
         "repo": "nix-index-database",
-        "rev": "9bd074026d6db75b59aae8cd6071b5f2fe27a36c",
+        "rev": "905f3e6f1e78165e79457c0bbe7ec4b885a5fce1",
         "type": "github"
       },
       "original": {
@@ -646,11 +646,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1795311052,
-        "narHash": "sha256-Ty3WAwlOCugH4mi7u4n0geIzZtLlh2Pdf+oI/Sa0d9A=",
+        "lastModified": 1795399965,
+        "narHash": "sha256-ZpUwASVx7F2+5e15OGJPGf2VZuXMJ0a1Lt5ij2jjt9I=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5884a31b0ab683834c9606fe01138afd7895b8dd",
+        "rev": "9247bfaad22801d937fc8239051d932e8b56e829",
         "type": "github"
       },
       "original": {
@@ -678,11 +678,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1795292212,
-        "narHash": "sha256-MqEzlzIcYViMLLpNx5VxG4aYVAm+N7dwRoPpn+fAMOo=",
+        "lastModified": 1795352266,
+        "narHash": "sha256-L4HgCW8Iz8OLazWQIUqWzDIuHB3RA1Zswg156MC9uLM=",
         "ref": "refs/heads/main",
-        "rev": "963c3c7d2ee7858f8d743708c3dc3a01e0a91575",
-        "revCount": 3165,
+        "rev": "6cc0e9af9aa67d6c87438d55405f8b0abcd39dde",
+        "revCount": 3169,
         "type": "git",
         "url": "https://codeberg.org/adingbatponder/reticulum_nixos_flake.git"
       },
@@ -834,11 +834,11 @@
     "zellij": {
       "flake": false,
       "locked": {
-        "lastModified": 1795192906,
-        "narHash": "sha256-akD5CvhVMXbPs/EMOc1j/tuw435F/pO3l8Ol5shYQ4M=",
+        "lastModified": 1795385423,
+        "narHash": "sha256-g05ntT7Vr2Z02RkN9svEaUKxwusGXnZrP32mB5VxkUM=",
         "owner": "zellij-org",
         "repo": "zellij",
-        "rev": "62cfa6c36dab1cba7f40cb41b4cf34aaed13db72",
+        "rev": "e49f233c19a3d19fbb08c87f3c1391a9a6c8baa2",
         "type": "github"
       },
       "original": {
