@@ -562,11 +562,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1795258312,
-        "narHash": "sha256-IEuDsf80ubivfpidbRsIm30HVo7PZIdZt1stRsbaY4Y=",
+        "lastModified": 1795370043,
+        "narHash": "sha256-s/0jq8usZtLVOolYBwmyUmd3JsfAu7w3FU+a0dgMqSY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "94c3211b0ee8ba969a3f12eb4aff8ba0f72971dd",
+        "rev": "0dc498bfe49baeb18b0f9891e800b53bb2603193",
         "type": "github"
       },
       "original": {
@@ -646,11 +646,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1795399965,
-        "narHash": "sha256-ZpUwASVx7F2+5e15OGJPGf2VZuXMJ0a1Lt5ij2jjt9I=",
+        "lastModified": 1795497031,
+        "narHash": "sha256-Iy5agAhLOf1N2KF/AFZen3/DuM47k0V1HUGMtRZKcpA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "9247bfaad22801d937fc8239051d932e8b56e829",
+        "rev": "3982e79c066575cba38bdc88a42ac31076d9ef9c",
         "type": "github"
       },
       "original": {
@@ -678,11 +678,11 @@
         "sops-nix": "sops-nix"
       },
       "locked": {
-        "lastModified": 1795352266,
-        "narHash": "sha256-L4HgCW8Iz8OLazWQIUqWzDIuHB3RA1Zswg156MC9uLM=",
+        "lastModified": 1795444509,
+        "narHash": "sha256-NaaBouxGLAw0QaIjWqY0HDhg+0XhKgJDRnbM6DDIKEM=",
         "ref": "refs/heads/main",
-        "rev": "6cc0e9af9aa67d6c87438d55405f8b0abcd39dde",
-        "revCount": 3169,
+        "rev": "f73465881cda1d7bc547f96138bd30ea0452549b",
+        "revCount": 3175,
         "type": "git",
         "url": "https://codeberg.org/adingbatponder/reticulum_nixos_flake.git"
       },
@@ -785,11 +785,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1794866654,
-        "narHash": "sha256-Y28AMB8lyKjASdJ0BVsR2AqR1cUsVuo8RVVpzHoECho=",
+        "lastModified": 1795471345,
+        "narHash": "sha256-2p8/wnENYHU2Z79Ir/rpq+V1sMI9mSD6xGAlvlbVBUY=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "7c637afdccdf9bcf35c4a2d67b58a77c1fd843a4",
+        "rev": "d5abe5e53200ad48254e8e6bd95e6cef94e66577",
         "type": "github"
       },
       "original": {
@@ -834,11 +834,11 @@
     "zellij": {
       "flake": false,
       "locked": {
-        "lastModified": 1795385423,
-        "narHash": "sha256-g05ntT7Vr2Z02RkN9svEaUKxwusGXnZrP32mB5VxkUM=",
+        "lastModified": 1795465155,
+        "narHash": "sha256-AsFvxmwqXtrrS+7UP0SNrezwxKCKAPXFZHB9Mu+4jR0=",
         "owner": "zellij-org",
         "repo": "zellij",
-        "rev": "e49f233c19a3d19fbb08c87f3c1391a9a6c8baa2",
+        "rev": "ed5097ee3de9696fcb86cd080533decc87cd7eb6",
         "type": "github"
       },
       "original": {
